@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Zola | Performance Hub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eef0ff",
+                        "surface": "#faf8ff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-background": "#131b2e",
+                        "tertiary-fixed-dim": "#c1c7d0",
+                        "on-surface-variant": "#464651",
+                        "inverse-surface": "#283044",
+                        "outline": "#777682",
+                        "tertiary-fixed": "#dee3ed",
+                        "primary-container": "#2d3282",
+                        "tertiary-container": "#363c44",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "outline-variant": "#c7c5d3",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#21262e",
+                        "surface-dim": "#d2d9f4",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e2e7ff",
+                        "on-primary-fixed": "#070963",
+                        "primary-fixed": "#e0e0ff",
+                        "on-tertiary-fixed": "#161c23",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eaedff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#dae2fd",
+                        "surface-bright": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "primary": "#15196c",
+                        "on-surface": "#131b2e",
+                        "on-primary-fixed-variant": "#393e8e",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-secondary-container": "#f3f3ff",
+                        "secondary-container": "#0262ff",
+                        "surface-tint": "#5156a7",
+                        "background": "#faf8ff",
+                        "secondary": "#004ccb",
+                        "on-secondary-fixed": "#00174b",
+                        "inverse-primary": "#bfc2ff",
+                        "on-primary-container": "#999ff5",
+                        "primary-fixed-dim": "#bfc2ff",
+                        "on-tertiary-fixed-variant": "#41474f",
+                        "surface-container-highest": "#dae2fd",
+                        "on-tertiary-container": "#a1a6af",
+                        "warm-amber": "#f59e0b",
+                        "soft-teal": "#14b8a6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "20px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "margin": "32px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "h1": ["Inter"],
+                        "h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-bold": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 40px -10px rgba(21, 25, 108, 0.08);
+        }
+
+        .active-ring {
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #0262ff;
+        }
+
+        .celebration-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+        }
+
+        .warm-gradient {
+            background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8faff] font-body-md text-on-background">
+    <!-- TopAppBar Shell -->
+    <header
+        class="sticky top-0 z-50 flex justify-between items-center px-8 h-16 w-full bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="flex items-center gap-6">
+            <span class="text-xl font-black text-indigo-900 tracking-tight">Zola</span>
+            <div class="hidden md:flex items-center bg-slate-100/50 px-4 py-2 rounded-full border border-slate-100">
+                <span class="material-symbols-outlined text-slate-400 mr-2" data-icon="search">search</span>
+                <input class="bg-transparent border-none focus:ring-0 text-sm w-64"
+                    placeholder="Search the community..." type="text" />
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button
+                class="p-2 hover:bg-slate-50 transition-colors rounded-full cursor-pointer active:scale-95 duration-150 text-slate-500">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button
+                class="p-2 hover:bg-slate-50 transition-colors rounded-full cursor-pointer active:scale-95 duration-150 text-slate-500">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            </button>
+            <div class="w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+                <img alt="User profile photo"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuByzfD0ob4x6hRjWnLS4ebBm7itYAksi5GwtHtlmV2036yFN9sAEhW5a42n5vLX1ajB0aQlt5dXVFrvl4Bx8g88iFpRdZ05gpq0ORfdkOWXY-MEx9J4W8ZWJ5n5WowTRLFNjEppXv7cVSRMTujTGpJHXXpzMg1d3ZehcF0_nZQyplIHPJd4tY74ceQAjBSJlcdwT1NMD5nCbOpQp5rcB0d5dxkKpUBqgWJooeqRYxmiijzL2cUv_xsVB-j1TqF1JISxS6yHCnvT7G4" />
+            </div>
+        </div>
+    </header>
+    <div class="flex">
+        <!-- SideNavBar Shell -->
+        <aside
+            class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-slate-100 bg-white py-6 flex flex-col hidden md:flex">
+            <nav class="flex-1 px-3 space-y-1">
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-indigo-700 bg-indigo-50/80 font-bold transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="home">home</span>
+                    <span class="font-inter text-sm font-semibold">Home</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                    <span class="font-inter text-sm font-semibold">Activity</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                    <span class="font-inter text-sm font-semibold">Scorecard</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+                    <span class="font-inter text-sm font-semibold">Leaderboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+                    <span class="font-inter text-sm font-semibold">Profile</span>
+                </a>
+            </nav>
+            <div class="px-6 mt-4">
+                <button
+                    class="w-full bg-primary text-white font-bold py-3.5 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                    <span class="material-symbols-outlined text-sm" data-icon="star">star</span>
+                    Give Praise
+                </button>
+            </div>
+            <div class="px-3 mt-auto border-t border-slate-100 pt-4">
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-500 hover:text-indigo-600 hover:bg-slate-50 transition-all text-sm font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined text-xl" data-icon="help">help</span>
+                    Help Center
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-500 hover:text-red-500 hover:bg-red-50 transition-all text-sm font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined text-xl" data-icon="logout">logout</span>
+                    Sign Out
+                </a>
+            </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="md:ml-64 flex-1 p-8 bg-[#f8faff] min-h-screen">
+            <!-- Header Section -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                <div>
+                    <h1 class="font-h1 text-h1 text-on-background tracking-tight">Good morning, Alex! 👋</h1>
+                    <p class="text-on-surface-variant font-body-md mt-1">Ready for another day of making an impact?</p>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="bg-secondary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-on-secondary-fixed-variant transition-all hover:shadow-xl shadow-lg shadow-secondary/20 active:scale-95">
+                        <span class="material-symbols-outlined" data-icon="celebration"
+                            style="font-variation-settings: 'FILL' 1;">celebration</span>
+                        Give Zola
+                    </button>
+                </div>
+            </div>
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-12 gap-gutter">
+                <!-- Left Column: Individual Focus & Progress -->
+                <div class="col-span-12 lg:col-span-4 space-y-gutter">
+                    <!-- Today's Focus (Daily Goals) -->
+                    <div class="bg-white p-6 rounded-xl card-shadow border border-slate-100">
+                        <div class="flex justify-between items-center mb-5">
+                            <h3 class="font-bold text-indigo-900 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-warm-amber" data-icon="bolt"
+                                    style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                Today's Focus
+                            </h3>
+                            <span class="text-xs font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded">1/3 Done</span>
+                        </div>
+                        <ul class="space-y-3">
+                            <li
+                                class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-100 hover:border-blue-400 transition-colors cursor-pointer group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full border-2 border-slate-200"></div>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-bold text-on-background">Secure a 5-star Google
+                                            Review</span>
+                                        <span class="text-[10px] text-slate-400">Goal: 1 review</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-slate-400">0/1</span>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 border border-transparent hover:border-slate-200 transition-colors cursor-pointer group">
+                                <div
+                                    class="w-6 h-6 rounded-full border-2 border-soft-teal bg-soft-teal/10 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[16px] text-soft-teal font-black"
+                                        data-icon="check">check</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-medium text-slate-500 line-through">Maintain NPS score
+                                        above 75 today</span>
+                                    <span class="text-[10px] text-soft-teal font-bold">Current: 86 NPS</span>
+                                </div>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-100 hover:border-secondary/30 transition-colors cursor-pointer">
+                                <div class="w-6 h-6 rounded-full border-2 border-slate-200"></div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-bold text-on-background">Complete 100% seat belt
+                                        usage</span>
+                                    <span class="text-[10px] text-slate-400">Safety compliance goal</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Your Wins (Rewards Balance) -->
+                    <div class="bg-white p-6 rounded-xl card-shadow border border-slate-100 relative overflow-hidden">
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-center mb-6">
+                                <span
+                                    class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest">Your
+                                    Wins</span>
+                                <span class="material-symbols-outlined text-warm-amber" data-icon="stars"
+                                    style="font-variation-settings: 'FILL' 1;">stars</span>
+                            </div>
+                            <div class="flex items-baseline gap-2 mb-2">
+                                <span class="font-h2 text-h2 text-primary">12,450</span>
+                                <span class="text-soft-teal font-bold text-sm">Points available</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mt-4">
+                                <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full w-[75%]">
+                                </div>
+                            </div>
+                            <p class="text-[11px] text-on-surface-variant mt-3 font-semibold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
+                                Only 550 points until your "Executive Badge" upgrade!
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Tips & Earnings Module -->
+                    <div class="warm-gradient p-6 rounded-xl card-shadow border border-amber-100">
+                        <div class="flex justify-between items-center mb-5">
+                            <h3 class="font-bold text-indigo-900 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-warm-amber" data-icon="savings"
+                                    style="font-variation-settings: 'FILL' 1;">savings</span>
+                                Tips &amp; Micro-bonuses
+                            </h3>
+                            <span
+                                class="text-[10px] bg-white px-2 py-1 rounded-full font-bold text-warm-amber border border-amber-100 shadow-sm">NEW</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-white/60 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-soft-teal/10 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-soft-teal text-sm"
+                                            data-icon="local_mall">local_mall</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-indigo-900">Customer Gratitude</p>
+                                        <p class="text-[10px] text-slate-500">Quick help with order #124</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-soft-teal">+$15.00</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white/60 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-warm-amber/10 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-warm-amber text-sm"
+                                            data-icon="coffee">coffee</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-indigo-900">Sarah J. sent a coffee</p>
+                                        <p class="text-[10px] text-slate-500">For the great presentation</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-warm-amber">+$5.00</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full mt-4 py-2.5 text-xs font-bold text-indigo-900 hover:bg-amber-100/50 rounded-lg transition-colors border border-dashed border-amber-200">
+                            View Earning History
+                        </button>
+                    </div>
+                    <!-- Achievements -->
+                    <div class="bg-white p-6 rounded-xl card-shadow border border-slate-100">
+                        <span
+                            class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest block mb-4">Milestone
+                            Badges</span>
+                        <div class="flex justify-around">
+                            <div class="flex flex-col items-center gap-2">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary active-ring">
+                                    <span class="material-symbols-outlined text-3xl" data-icon="workspace_premium"
+                                        style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-center">Innova­tor</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 opacity-50">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+                                    <span class="material-symbols-outlined text-3xl" data-icon="handshake"
+                                        style="font-variation-settings: 'FILL' 1;">handshake</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-center">Team Hero</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 opacity-50">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+                                    <span class="material-symbols-outlined text-3xl" data-icon="speed"
+                                        style="font-variation-settings: 'FILL' 1;">speed</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-center">Velocity</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full mt-6 py-2.5 bg-slate-50 text-indigo-700 font-bold text-sm rounded-xl hover:bg-indigo-100 transition-colors">
+                            View Trophy Room
+                        </button>
+                    </div>
+                </div>
+                <!-- Right Column: Wall of Fame -->
+                <div class="col-span-12 lg:col-span-8">
+                    <div
+                        class="bg-white rounded-2xl card-shadow border border-slate-100 h-full flex flex-col overflow-hidden">
+                        <div
+                            class="p-6 border-b border-slate-50 flex justify-between items-center bg-gradient-to-r from-white to-slate-50/30">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-secondary" data-icon="celebration"
+                                        style="font-variation-settings: 'FILL' 1;">celebration</span>
+                                </div>
+                                <div>
+                                    <h2 class="font-h3 text-h3 text-indigo-900">Wall of Fame</h2>
+                                    <p class="text-[11px] text-slate-400 font-bold uppercase tracking-wide">Celebrate
+                                        our community</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 p-1 bg-slate-100 rounded-full">
+                                <button
+                                    class="px-4 py-1.5 text-xs font-bold rounded-full transition-all text-slate-500 hover:text-indigo-900">Everyone</button>
+                                <button
+                                    class="px-4 py-1.5 text-xs font-bold bg-white text-indigo-900 rounded-full shadow-sm">My
+                                    Circle</button>
+                            </div>
+                        </div>
+                        <!-- Recognition Feed -->
+                        <div class="flex-1 p-6 space-y-8 overflow-y-auto">
+                            <!-- Feed Item 1 -->
+                            <div class="group relative bg-white transition-all duration-300">
+                                <div class="flex gap-4">
+                                    <div class="relative flex-shrink-0">
+                                        <div
+                                            class="w-14 h-14 rounded-2xl overflow-hidden border-2 border-secondary active-ring rotate-3 group-hover:rotate-0 transition-transform">
+                                            <img alt="Sarah Jenkins"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3AEqFg2gY-D-mjY7pmozOVUZU4sqpWbPcyv7iUuQB7LDxqks8LaZRdN7-ZBuOVy_4R94iF3_GG6y6ckJxqyIEF7pDKIaSec9St4aaxEMOOURjUDAmvk5V9IcIpgSvE70SgqbDWvgiTmIPTd1eFLRiXL9W9BfAhBX1xVsJKjql_mUJUdOvdcuJBDuh-EuGcPLJYnom5_ybSIIx-xySRWG4bJwAHe1g8bYBG_nvB2vNrniZ3Z0HvinmNGL00pd-zWLrts-S4r314gA" />
+                                        </div>
+                                        <div
+                                            class="absolute -bottom-2 -right-2 bg-warm-amber text-white rounded-full p-1.5 border-2 border-white shadow-md">
+                                            <span class="material-symbols-outlined text-[12px] block font-black"
+                                                data-icon="emoji_events">emoji_events</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <div>
+                                                <p class="text-sm font-bold text-indigo-900">Sarah Jenkins <span
+                                                        class="text-slate-400 font-normal">celebrated</span> Michael
+                                                    Chen</p>
+                                                <p class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-[12px]"
+                                                        data-icon="schedule">schedule</span> 2 hours ago • <span
+                                                        class="text-secondary font-bold">#CustomerObsession</span>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="flex items-center gap-1 text-soft-teal bg-teal-50 px-2 py-1 rounded-lg border border-teal-100">
+                                                <span class="text-xs font-black">+250</span>
+                                                <span class="material-symbols-outlined text-sm" data-icon="token"
+                                                    style="font-variation-settings: 'FILL' 1;">token</span>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="mt-3 celebration-gradient p-5 rounded-2xl border border-blue-50 italic text-indigo-900/80 font-body-md relative shadow-sm">
+                                            "Michael went above and beyond to help a client during the server migration.
+                                            His calm demeanor and technical expertise saved the day! Truly an
+                                            inspiration to the team."
+                                            <span
+                                                class="material-symbols-outlined absolute -top-3 -left-2 text-indigo-200 text-4xl opacity-50"
+                                                data-icon="format_quote">format_quote</span>
+                                        </div>
+                                        <div class="mt-4 flex items-center gap-6">
+                                            <button
+                                                class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all hover:scale-105">
+                                                <span class="material-symbols-outlined text-xl" data-icon="favorite"
+                                                    style="font-variation-settings: 'FILL' 1;">favorite</span> 12 Claps
+                                            </button>
+                                            <button
+                                                class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all hover:scale-105">
+                                                <span class="material-symbols-outlined text-xl"
+                                                    data-icon="chat_bubble">chat_bubble</span> 3 Comments
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feed Item 2 -->
+                            <div class="group relative bg-white transition-all duration-300">
+                                <div class="flex gap-4">
+                                    <div class="relative flex-shrink-0">
+                                        <div
+                                            class="w-14 h-14 rounded-2xl overflow-hidden border-2 border-slate-100 -rotate-2 group-hover:rotate-0 transition-transform">
+                                            <img alt="David Miller"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR3fVPjaysof3dsmbln8E_ftFzFglZi56IoiOeVQbgAbJbN1vAvuLTY-tXbV8x_XS7G9xSYrK7R2DYDm9vDscQGJztgnY10-ZAH7DtQu2PHMOWGPEwOiiGVmkwM49SP3JIDBaE54bIS9OxBOZ4cC7JjYR_Og5aGfuLQdB_YA8wtN8yo1PnXqRB8RJsv_Qmcr6-khgFqWYUy5R8av9xjCG5YHKMtRoGIJb9BzH8Z-KXbBb39Vq58SNLbBHa-UO6c_KBoH6-w7CTZrw" />
+                                        </div>
+                                        <div
+                                            class="absolute -bottom-2 -right-2 bg-indigo-600 text-white rounded-full p-1.5 border-2 border-white shadow-md">
+                                            <span class="material-symbols-outlined text-[12px] block font-black"
+                                                data-icon="lightbulb"
+                                                style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <div>
+                                                <p class="text-sm font-bold text-indigo-900">David Miller <span
+                                                        class="text-slate-400 font-normal">shouted out</span> The UX
+                                                    Team</p>
+                                                <p class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-[12px]"
+                                                        data-icon="schedule">schedule</span> 5 hours ago • <span
+                                                        class="text-secondary font-bold">#Innovation</span>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="flex items-center gap-1 text-soft-teal bg-teal-50 px-2 py-1 rounded-lg border border-teal-100">
+                                                <span class="text-xs font-black">+500</span>
+                                                <span class="material-symbols-outlined text-sm" data-icon="token"
+                                                    style="font-variation-settings: 'FILL' 1;">token</span>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="mt-3 bg-slate-50/50 p-5 rounded-2xl border border-slate-100 italic text-indigo-900/80 font-body-md relative">
+                                            "The new dashboard design is a game changer. The team worked tirelessly to
+                                            balance data density with elegant aesthetics. Great work everyone!"
+                                            <span
+                                                class="material-symbols-outlined absolute -top-3 -left-2 text-slate-200 text-4xl"
+                                                data-icon="format_quote">format_quote</span>
+                                        </div>
+                                        <div class="mt-4 flex items-center gap-6">
+                                            <button
+                                                class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                                                <span class="material-symbols-outlined text-xl"
+                                                    data-icon="favorite">favorite</span> 28 Claps
+                                            </button>
+                                            <button
+                                                class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                                                <span class="material-symbols-outlined text-xl"
+                                                    data-icon="chat_bubble">chat_bubble</span> 8 Comments
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feed Item 3 (Visual Story) -->
+                            <div class="group relative bg-white transition-all duration-300">
+                                <div class="flex gap-4">
+                                    <div class="relative flex-shrink-0">
+                                        <div class="w-14 h-14 rounded-2xl overflow-hidden border-2 border-slate-100">
+                                            <img alt="Jessica Wong"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Cknyy34cxw0rObjCTqZBJVZvqcINJ5CdcE4bPAuKhOa6i8LJyqTyh7SneWnYDgDeJ1xrc8-PXxGhMx1kZqYs0zqNnw3ATXicr74lpTK5OO-KgVZuJMnC4vifrqkxvtRAuQZifwpp1HX8AaAgUP9LBt72eA1iGtB-1HkXkprGxRy95kF9RtoWhlRtGh5tKY63djz-mtBflR4nPUx9FKS8kjLB8NYRrooD8EWpYB6B6MOrrCOFU52cpIOT3s20PP0h8769zLshnuw" />
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <div>
+                                                <p class="text-sm font-bold text-indigo-900">Jessica Wong <span
+                                                        class="text-slate-400 font-normal">gave a high-five to</span>
+                                                    Liam O'Reilly</p>
+                                                <p class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
+                                                    <span class="material-symbols-outlined text-[12px]"
+                                                        data-icon="schedule">schedule</span> Yesterday • <span
+                                                        class="text-secondary font-bold">#TeamSpirit</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p class="mt-3 text-indigo-900/80 font-body-md">Thanks for organizing the team
+                                            lunch, Liam! It was exactly what we needed to recharge. 🥗✨</p>
+                                        <div
+                                            class="mt-4 rounded-2xl overflow-hidden h-48 w-full relative group shadow-sm border border-slate-100">
+                                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtp9ugrAHEsIT9X7h4TxBJS3Vv2M3jMGsB-zODr81l2AC4TDKWJCg18ruEeY0JAi708vVAVFR2KSAnb_bG08cby1ENpjhdoBP9Ee3wRveq_NrgsqOX7hPTQ21LJfHZYB8cddkN0bYSh1ss89B93iyZg69g4Zg8dTaEB3Xf2RdcPAnYckhh85LDFRgPL1QV24Ds9u9ts1K1nAjkQ6AJRFJUeyPp2ETJgSR_QgHHmDyjwsRomHK3WZ2IJsSdcYk4EbpWyG_Zq4J12HA" />
+                                            <div
+                                                class="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                                                <span
+                                                    class="bg-white text-indigo-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg">View
+                                                    Album</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 flex items-center gap-6">
+                                            <button
+                                                class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                                                <span class="material-symbols-outlined text-xl"
+                                                    data-icon="favorite">favorite</span> 45 Claps
+                                            </button>
+                                            <button
+                                                class="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                                                <span class="material-symbols-outlined text-xl"
+                                                    data-icon="chat_bubble">chat_bubble</span> 15 Comments
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Load More -->
+                        <div class="p-6 bg-slate-50/50 border-t border-slate-50 text-center">
+                            <button
+                                class="text-sm font-bold text-indigo-700 hover:text-indigo-900 transition-colors flex items-center justify-center gap-2 mx-auto">
+                                <span class="material-symbols-outlined text-base"
+                                    data-icon="expand_more">expand_more</span>
+                                See more recognitions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Mobile Navigation Shell -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-100 flex justify-around py-3 px-2 z-50">
+        <a class="flex flex-col items-center gap-1 text-secondary font-bold" href="#">
+            <span class="material-symbols-outlined" data-icon="home"
+                style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="text-[10px]">Home</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+            <span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+            <span class="text-[10px]">Activity</span>
+        </a>
+        <div class="relative -top-8">
+            <button
+                class="bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-primary/40 border-4 border-white">
+                <span class="material-symbols-outlined" data-icon="star">star</span>
+            </button>
+        </div>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+            <span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+            <span class="text-[10px]">Leaderboard</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+            <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+            <span class="text-[10px]">Profile</span>
+        </a>
+    </nav>
+</body>
+
+</html>

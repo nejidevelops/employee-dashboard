@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eef0ff",
+                        "surface": "#faf8ff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-background": "#131b2e",
+                        "tertiary-fixed-dim": "#c1c7d0",
+                        "on-surface-variant": "#464651",
+                        "inverse-surface": "#283044",
+                        "outline": "#777682",
+                        "tertiary-fixed": "#dee3ed",
+                        "primary-container": "#2d3282",
+                        "tertiary-container": "#363c44",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "outline-variant": "#c7c5d3",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#21262e",
+                        "surface-dim": "#d2d9f4",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e2e7ff",
+                        "on-primary-fixed": "#070963",
+                        "primary-fixed": "#e0e0ff",
+                        "on-tertiary-fixed": "#161c23",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eaedff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#dae2fd",
+                        "surface-bright": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "primary": "#15196c",
+                        "on-surface": "#131b2e",
+                        "on-primary-fixed-variant": "#393e8e",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-secondary-container": "#f3f3ff",
+                        "secondary-container": "#0262ff",
+                        "surface-tint": "#5156a7",
+                        "background": "#faf8ff",
+                        "secondary": "#004ccb",
+                        "on-secondary-fixed": "#00174b",
+                        "inverse-primary": "#bfc2ff",
+                        "on-primary-container": "#999ff5",
+                        "primary-fixed-dim": "#bfc2ff",
+                        "on-tertiary-fixed-variant": "#41474f",
+                        "surface-container-highest": "#dae2fd",
+                        "on-tertiary-container": "#a1a6af"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "margin": "32px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "h1": ["Inter"],
+                        "h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-bold": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-celebrate {
+            animation: celebrate 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body-md text-on-background min-h-screen">
+    <!-- TopAppBar Navigation Shell -->
+    <header
+        class="sticky top-0 z-50 flex justify-between items-center px-8 h-16 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="flex items-center gap-8">
+            <h1 class="text-xl font-black text-indigo-900 dark:text-white font-inter tracking-tight">Zola</h1>
+            <div class="hidden md:flex items-center gap-6">
+                <nav class="flex gap-6">
+                    <a class="text-slate-500 dark:text-slate-400 font-inter text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 duration-150"
+                        href="#">Home</a>
+                    <a class="text-indigo-700 dark:text-indigo-400 font-bold font-inter text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 duration-150"
+                        href="#">Activity</a>
+                    <a class="text-slate-500 dark:text-slate-400 font-inter text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 duration-150"
+                        href="#">Scorecard</a>
+                </nav>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative group">
+                <span
+                    class="material-symbols-outlined text-slate-500 cursor-pointer p-2 rounded-full hover:bg-slate-100 transition-colors">search</span>
+            </div>
+            <span
+                class="material-symbols-outlined text-slate-500 cursor-pointer p-2 rounded-full hover:bg-slate-100 transition-colors"
+                data-icon="notifications">notifications</span>
+            <span
+                class="material-symbols-outlined text-slate-500 cursor-pointer p-2 rounded-full hover:bg-slate-100 transition-colors"
+                data-icon="settings">settings</span>
+            <div class="w-8 h-8 rounded-full bg-primary overflow-hidden border-2 border-secondary-container">
+                <img alt="User profile photo" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQWtQxiZEzGUYmWFOJF8UO6k1YzUK8H6F2C7ejKf0tYPo5vXMg6thUgzAXfqT1fLnbtz_DK-5C6UNdJE43gmEV_WpdlL2V2Y_kl1UuN4Z1BVDYoCJjRC_sB4AFWzMXPTDAWQp9BYKKWix6gbBFRfDli0D7_KYfUtLvQXk7KTIYxVRjyn-hBDN7-KdNfdymJ_JdlcLZLriwJfU-Sg_nr8vDi47K7DFYFvShqNzk0zVsN0rofCgO7ubFyOU0eIlJhU4kjvyvbrTo4Bg" />
+            </div>
+        </div>
+    </header>
+    <div class="flex min-h-[calc(100vh-64px)]">
+        <!-- SideNavBar Navigation Shell - Dark Theme High Contrast -->
+        <aside
+            class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-white border-r border-slate-100 py-6 hidden lg:flex flex-col">
+            <div class="px-4 mb-10">
+                <button
+                    class="w-full py-2.5 bg-primary-container text-white font-bold rounded-lg shadow-sm flex items-center justify-center gap-2 transition-all hover:bg-primary active:scale-95">
+                    <span class="material-symbols-outlined text-lg" data-icon="add_circle">add_circle</span>
+                    Give Recognition
+                </button>
+            </div>
+            <nav class="flex-1 px-2 space-y-1">
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-inter text-sm font-semibold rounded-lg hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Home
+                </a>
+                <a class="flex items-center justify-between px-4 py-3 text-primary-container bg-indigo-50/30 font-inter text-sm font-bold rounded-lg relative overflow-hidden transition-all duration-200"
+                    href="#">
+                    <span class="flex items-center gap-3">
+                        <span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                        Activity
+                    </span>
+                    <div class="absolute right-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-inter text-sm font-semibold rounded-lg hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+                    Scorecard
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-inter text-sm font-semibold rounded-lg hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+                    Leaderboard
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-inter text-sm font-semibold rounded-lg hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+                    Profile
+                </a>
+            </nav>
+            <div class="mt-auto px-2 space-y-1">
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-inter text-sm font-semibold rounded-lg hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="help">help</span>
+                    Help
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-slate-500 font-inter text-sm font-semibold rounded-lg hover:bg-slate-50 transition-all duration-200"
+                    href="#">
+                    <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    Logout
+                </a>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 lg:ml-64 p-8 bg-surface">
+            <div class="max-w-6xl mx-auto grid grid-cols-12 gap-gutter">
+                <!-- Left Sidebar Filters (Desktop) -->
+                <div class="hidden xl:block col-span-3 space-y-gutter">
+                    <div class="bg-white p-6 rounded-xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] sticky top-24">
+                        <h3 class="font-h3 text-on-background mb-4">Filters</h3>
+                        <div class="space-y-2">
+                            <button
+                                class="w-full flex items-center justify-between px-4 py-2.5 rounded-lg bg-indigo-50 text-primary font-semibold text-sm">
+                                <span class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[20px]" data-icon="list">list</span>
+                                    All Activity
+                                </span>
+                                <span class="bg-indigo-100 px-2 py-0.5 rounded text-[10px]">24</span>
+                            </button>
+                            <button
+                                class="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-semibold text-sm transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[20px]"
+                                        data-icon="payments">payments</span>
+                                    Tips &amp; Wins
+                                </span>
+                                <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-[10px]">New</span>
+                            </button>
+                            <button
+                                class="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-semibold text-sm transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[20px]" data-icon="star">star</span>
+                                    Recognitions
+                                </span>
+                            </button>
+                            <button
+                                class="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-semibold text-sm transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[20px]" data-icon="cake">cake</span>
+                                    Anniversaries
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Center Feed -->
+                <div class="col-span-12 xl:col-span-6 space-y-gutter">
+                    <!-- Mobile Tabs -->
+                    <div class="xl:hidden flex bg-white p-1 rounded-xl shadow-sm border border-slate-100 mb-6">
+                        <button class="flex-1 py-2 text-sm font-bold bg-indigo-50 text-primary rounded-lg">All
+                            Activity</button>
+                        <button class="flex-1 py-2 text-sm font-semibold text-slate-500">Tips &amp; Wins</button>
+                    </div>
+                    <!-- Feed Grouped by Time -->
+                    <div class="space-y-8">
+                        <!-- TODAY SECTION -->
+                        <section>
+                            <div class="flex items-center gap-4 mb-6">
+                                <h2 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Today</h2>
+                                <div class="h-[1px] flex-1 bg-slate-100"></div>
+                            </div>
+                            <div class="space-y-6">
+                                <!-- TIP RECEIVED -->
+                                <article
+                                    class="relative bg-white rounded-2xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] p-6 border-2 border-yellow-100 overflow-hidden group hover:shadow-[0_20px_40px_rgb(255,215,0,0.12)] transition-all">
+                                    <div class="absolute top-0 right-0 p-4 pointer-events-none">
+                                        <span
+                                            class="material-symbols-outlined text-yellow-400 text-4xl opacity-20 animate-celebrate"
+                                            data-icon="celebration">celebration</span>
+                                    </div>
+                                    <div class="flex items-start gap-4 mb-4">
+                                        <div class="relative flex-shrink-0">
+                                            <div
+                                                class="w-12 h-12 rounded-full overflow-hidden border-2 border-yellow-400 ring-4 ring-yellow-50">
+                                                <img alt="User" class="w-full h-full object-cover"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQWtQxiZEzGUYmWFOJF8UO6k1YzUK8H6F2C7ejKf0tYPo5vXMg6thUgzAXfqT1fLnbtz_DK-5C6UNdJE43gmEV_WpdlL2V2Y_kl1UuN4Z1BVDYoCJjRC_sB4AFWzMXPTDAWQp9BYKKWix6gbBFRfDli0D7_KYfUtLvQXk7KTIYxVRjyn-hBDN7-KdNfdymJ_JdlcLZLriwJfU-Sg_nr8vDi47K7DFYFvShqNzk0zVsN0rofCgO7ubFyOU0eIlJhU4kjvyvbrTo4Bg" />
+                                            </div>
+                                            <div
+                                                class="absolute -bottom-1 -right-1 bg-yellow-400 p-1 rounded-full shadow-sm">
+                                                <span class="material-symbols-outlined text-[14px] text-white font-bold"
+                                                    style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-inter text-sm text-slate-500">You received a <span
+                                                    class="font-bold text-yellow-600">Gold Star Tip</span> from <span
+                                                    class="font-bold text-on-background">Elena Rodriguez</span></p>
+                                            <p class="text-xs text-slate-400 mt-0.5">30 mins ago • Operations Excellence
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="pl-16">
+                                        <div
+                                            class="bg-yellow-50/50 rounded-xl p-5 border-l-4 border-yellow-400 relative">
+                                            <p class="text-body-md text-on-background italic leading-relaxed">
+                                                "Thank you for going above and beyond on the project migration last
+                                                night. The $50 bonus is well deserved! 🎉"
+                                            </p>
+                                        </div>
+                                        <div class="mt-6 flex items-center gap-6">
+                                            <button
+                                                class="flex items-center gap-2 px-4 py-2 bg-yellow-100/50 hover:bg-yellow-100 rounded-full transition-colors group">
+                                                <span class="material-symbols-outlined text-[20px] text-yellow-600"
+                                                    data-icon="favorite"
+                                                    style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                                <span class="text-sm font-bold text-yellow-700">Appreciate Back</span>
+                                            </button>
+                                            <button class="flex items-center gap-2 group">
+                                                <span
+                                                    class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary transition-colors"
+                                                    data-icon="chat_bubble">chat_bubble</span>
+                                                <span class="text-sm font-semibold text-slate-500">Reply</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                                <!-- Recognition Post -->
+                                <article
+                                    class="bg-white rounded-2xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] p-6 transition-all hover:shadow-[0_20px_40px_rgb(21,25,108,0.08)]">
+                                    <div class="flex items-start gap-4 mb-4">
+                                        <div class="relative flex-shrink-0">
+                                            <div
+                                                class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary-container">
+                                                <img alt="Sarah Chen" class="w-full h-full object-cover"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKskahyZjsD9NPvAmFh_FB8QzGInBQgteGhYT49GLvHbOQz6GNQNUtbPVR5fIEqBxZmNyuVLC29vZ8Lwxr47N2T8UAKTssy44W91cQFOnn0CyZwfD--52WDDDHwTqdAmxTj8fCgnNULvGqZym9TndC36S9eAYdY_dlrvje3XTKFX95kExhjaKLCCmTQd0X1yv3dspVI-XQPUU9VkYwUvBYpqTRScbnQLGYr1FC4huUh2rOLMU1R02j0RqSRrj_H9KCsw1IkuzDqxI" />
+                                            </div>
+                                            <div class="absolute -bottom-1 -right-1 bg-white p-0.5 rounded-full">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-secondary-container"
+                                                    data-icon="verified"
+                                                    style="font-variation-settings: 'FILL' 1;">verified</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-inter text-sm text-slate-500"><span
+                                                    class="font-bold text-on-background">Sarah Chen</span> recognized
+                                                <span class="font-bold text-on-background">Marcus Thorne</span></p>
+                                            <p class="text-xs text-slate-400 mt-0.5">2 hours ago • Product Design</p>
+                                        </div>
+                                        <button class="text-slate-300 hover:text-slate-500 transition-colors">
+                                            <span class="material-symbols-outlined"
+                                                data-icon="more_horiz">more_horiz</span>
+                                        </button>
+                                    </div>
+                                    <div class="pl-16">
+                                        <div
+                                            class="bg-surface-container-low rounded-xl p-5 border-l-4 border-secondary-container relative overflow-hidden">
+                                            <p class="text-body-md text-on-background italic leading-relaxed">
+                                                "Marcus did an incredible job leading the Q3 design sprint. His
+                                                attention to user edge cases and collaborative spirit made all the
+                                                difference! 🚀"
+                                            </p>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <span
+                                                    class="px-3 py-1 bg-white rounded-full text-[11px] font-bold text-secondary uppercase tracking-wider shadow-sm">#TeamPlayer</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex items-center gap-6">
+                                            <button class="flex items-center gap-2 group">
+                                                <span
+                                                    class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-red-500 transition-colors"
+                                                    data-icon="favorite">favorite</span>
+                                                <span
+                                                    class="text-sm font-semibold text-slate-500 group-hover:text-on-background">12</span>
+                                            </button>
+                                            <button class="flex items-center gap-2 group">
+                                                <span
+                                                    class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary transition-colors"
+                                                    data-icon="chat_bubble">chat_bubble</span>
+                                                <span
+                                                    class="text-sm font-semibold text-slate-500 group-hover:text-on-background">4</span>
+                                            </button>
+                                            <button class="flex items-center gap-2 group ml-auto">
+                                                <span
+                                                    class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary transition-colors"
+                                                    data-icon="share">share</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                        <!-- YESTERDAY SECTION -->
+                        <section>
+                            <div class="flex items-center gap-4 mb-6">
+                                <h2 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">Yesterday</h2>
+                                <div class="h-[1px] flex-1 bg-slate-100"></div>
+                            </div>
+                            <div class="space-y-6">
+                                <!-- Work Anniversary Item -->
+                                <article
+                                    class="bg-gradient-to-br from-white to-surface-container-low rounded-2xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] p-6 relative overflow-hidden border border-indigo-50">
+                                    <div class="flex items-center gap-5">
+                                        <div
+                                            class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-secondary-container to-primary flex-shrink-0">
+                                            <div class="w-full h-full rounded-full overflow-hidden bg-white">
+                                                <img alt="David Miller" class="w-full h-full object-cover"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjXUGlorn-TDVeYmWWXMtcL2KqhO9YKVMwLJ9UY58gWT984TKjWJ71Jjq3-af8yQZKH1opvc0TrErY-gF3PORTFjl2xf0DhI68W9iCGLjzMF9OLDE8Iwu-KAyqc0CyaQr3kAI64d_ISoGC9soEGkijcREVIgxGh53sKjEvRfirLGtLzsVpyGzJshw6FjXdjDlNhwL4YiXkLxyFEOHXxDVV-lb_JBpSoxiUtH2aHZMU41Mgyht346aZ6MU8oW8uywZrDZhzwBnHgWA" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-bold text-lg text-on-background">Happy 3rd Anniversary!</h4>
+                                            <p class="text-body-sm text-slate-500">Congratulations to <span
+                                                    class="text-primary font-bold">David Miller</span> on 3 years.</p>
+                                        </div>
+                                        <div
+                                            class="text-center px-4 py-2 bg-white rounded-xl shadow-sm border border-slate-100">
+                                            <span class="block text-xl font-black text-secondary">3</span>
+                                            <span
+                                                class="text-[10px] uppercase font-black text-slate-400 tracking-widest">Years</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-6 flex items-center gap-3">
+                                        <div class="flex -space-x-2">
+                                            <img alt="Avatar" class="w-6 h-6 rounded-full border-2 border-white"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB40VQE1QxDN7krDowWRo1V4GLkkyhooC8qLMhrL8UVscVqgGn1DrnSyrKC-c6R4MoJvDMoca1KgL-v14Zm6ZG910ur1CDyLTSLyKio4f3hlKn0j2fU20MsF0lw8Ce74NCyM95hV5TQpSTmAJPeuaKS4F2DKZ35kHa6bd4j97exZeYKIaZXnJ1ZCkXU4o25qm2z7I78cFPZH42ZQuj-Z9FFbJq-9usiUlHrgXCQO9ATz1beIaltj2Q8_458A1Ux9pXpsBwi2cd04v4" />
+                                            <div
+                                                class="w-6 h-6 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[8px] font-bold">
+                                                +8</div>
+                                        </div>
+                                        <p class="text-xs font-semibold text-slate-400">sent wishes</p>
+                                        <button
+                                            class="ml-auto py-2 px-4 bg-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg hover:bg-slate-50 transition-colors shadow-sm">Congratulate</button>
+                                    </div>
+                                </article>
+                                <!-- Recognition Post -->
+                                <article
+                                    class="bg-white rounded-2xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] p-6 transition-all hover:shadow-[0_20px_40px_rgb(21,25,108,0.08)]">
+                                    <div class="flex items-start gap-4 mb-4">
+                                        <div class="relative flex-shrink-0">
+                                            <div
+                                                class="w-12 h-12 rounded-full overflow-hidden border-2 border-slate-100">
+                                                <img alt="Elena Rodriguez" class="w-full h-full object-cover"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBODEvRUzPz23IbeSJB1T4t3MI-t7EO4aSQlFN_PWdEkmnkxlgRAIFEn0sPGTSFZ0BzCXnqfba4-Y1Up5ASIdIwg7v6bxVVaOYk2g86MIKXm6oVejMxMBYdnsRVfrT8AZGH4TGNQsh8A6qY6EFwAZAJOr0LxLDXRLVyBEq6FMle4cBqJmh5j7EXq-ohzfDict7qVaCubDM4aFt8lGSqmtpE-4kTpF_bxi7GGCORVWLnfv4rCudhoUmLFBlcDZJh694OMONAFx8GNQc" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-inter text-sm text-slate-500"><span
+                                                    class="font-bold text-on-background">Elena Rodriguez</span>
+                                                recognized <span class="font-bold text-on-background">Design Team</span>
+                                            </p>
+                                            <p class="text-xs text-slate-400 mt-0.5">18 hours ago • Ops</p>
+                                        </div>
+                                    </div>
+                                    <div class="pl-16">
+                                        <p class="text-body-md text-on-background leading-relaxed">
+                                            Major shoutout to the entire design crew for the brand refresh. The new
+                                            system is incredibly cohesive and intuitive!
+                                        </p>
+                                        <div class="mt-4 grid grid-cols-2 gap-2">
+                                            <div
+                                                class="aspect-video bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
+                                                <img alt="Work" class="w-full h-full object-cover"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeLNedHtx8-GCB-9hARXEyE-HhCOy7oRUoKd-DXOrbC7w1Nhbj1AHmhDVIM_Q1d84oEt4IQJVufxK39mf8g4re1sHKoAEDYRy3950-IcYWWd84dY1aDkWg7HXp1tgf68-Jc7Y5aEt9X6Y4nTlYvflBxUTItYop6ajdOtcNJxq_VYpFQxEO3AiVNSlrUhKcC2Ex9XIdHyTPU5cgGOflmwhppZCHyO7MVhLmCQ0UaMh2JvaDr0wAHoKS0QabN3jmEfuGAOHykDsLc_8" />
+                                            </div>
+                                            <div
+                                                class="aspect-video bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
+                                                <img alt="Design System" class="w-full h-full object-cover"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjQsAQzZHw1uM-EE7bPtozWcNe9J6iLiU96YMTXV1SJyQsvB2AbBe96FsiVXG6qF-QVQp5JQiKIWsoFhEMC7XGJ27x9IxEI48MhHpGpP2odBi0ZpvycCfFGtb4G3RmSqFqIsAg4VA1z6ie3AdY--jcRQOweyIS85kimWUA3n-Cleeklv7H0keYgjH4DwysN9qunhA28b3CmjpeCWK5ctOfrZWd1lcs3gHuQxQfAL-djVW_Gqb9kgXUZiegYktmw445kegd21utSag" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex items-center gap-6">
+                                            <button class="flex items-center gap-2 group">
+                                                <span
+                                                    class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-red-500 transition-colors"
+                                                    data-icon="favorite">favorite</span>
+                                                <span
+                                                    class="text-sm font-semibold text-slate-500 group-hover:text-on-background">34</span>
+                                            </button>
+                                            <button class="flex items-center gap-2 group">
+                                                <span
+                                                    class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary transition-colors"
+                                                    data-icon="chat_bubble">chat_bubble</span>
+                                                <span
+                                                    class="text-sm font-semibold text-slate-500 group-hover:text-on-background">8</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- Right Sidebar - Statistics / Trends -->
+                <div class="hidden lg:block col-span-3 space-y-gutter">
+                    <!-- Personal Performance -->
+                    <div class="bg-gradient-to-br from-primary to-indigo-900 p-6 rounded-xl shadow-lg text-white mb-6">
+                        <h3 class="font-h3 text-white mb-4 flex items-center gap-2 text-sm">
+                            <span class="material-symbols-outlined text-yellow-400"
+                                data-icon="military_tech">military_tech</span>
+                            Personal Wins
+                        </h3>
+                        <div class="flex items-end gap-2 mb-4">
+                            <span class="text-4xl font-black">$240</span>
+                            <span class="text-indigo-200 text-xs mb-1">Total Appreciation</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-indigo-200">Monthly Goal</span>
+                                <span class="font-bold">80%</span>
+                            </div>
+                            <div class="h-1.5 bg-indigo-800/50 rounded-full overflow-hidden">
+                                <div class="h-full bg-yellow-400 w-[80%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Trending Section -->
+                    <div class="bg-white p-6 rounded-xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] border border-white">
+                        <h3 class="font-h3 text-on-background mb-6 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary"
+                                data-icon="trending_up">trending_up</span>
+                            Activity Trends
+                        </h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span
+                                        class="text-xs font-bold text-slate-400 uppercase tracking-widest">Recognitions</span>
+                                    <span class="text-sm font-black text-primary">+12%</span>
+                                </div>
+                                <div class="h-2 bg-indigo-50 rounded-full overflow-hidden">
+                                    <div class="h-full bg-secondary-container w-[72%] rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Upcoming Events -->
+                    <div class="bg-white p-6 rounded-xl shadow-[0_8px_30px_rgb(21,25,108,0.05)]">
+                        <h3 class="font-h3 text-on-background mb-4">Upcoming Events</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full overflow-hidden bg-slate-100 flex-shrink-0">
+                                    <img alt="James"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8ViWu7hTZFAOlC9GZZQTwk8ADnTBGL1AfsHUmV4PxUgCczZ5kUBxWHZFJiOV4LRgK4qMpCq44QXrMkt-xVdF9u7ZYLuQSn_fJzZdNbuZgTP2JlxEnulpkV1pt3eYYq7_WL3ex1_xOyoX4ntouq0MzKSYdiK1hh_BVjPTNzYA5FjLpjDIMRYQaOegnoYoR9rLf9ftCQk8DSs-AdfyO5UbhGtx_-oV0jWh7c8XTNlM3Dblc3qd-NObaL4go4Gn7lLTKy9_kPtYxvtQ" />
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-bold text-on-background leading-tight">James Wilson</p>
+                                    <p class="text-[11px] text-slate-400">Birthday • Tomorrow</p>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary-container text-sm"
+                                    data-icon="cake">cake</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full mt-6 py-2 text-xs font-bold text-primary hover:text-secondary-container transition-colors border-t border-slate-50 pt-4">View
+                            All Events</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Floating Action Button (FAB) -->
+    <button
+        class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[60] lg:hidden">
+        <span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+    </button>
+</body>
+
+</html>

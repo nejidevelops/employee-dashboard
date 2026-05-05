@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Colors based on Employee Performance Hub design system */
+  --color-surface: #faf8ff;
+  --color-surface-dim: #d2d9f4;
+  --color-surface-bright: #faf8ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f3ff;
+  --color-surface-container: #eaedff;
+  --color-surface-container-high: #e2e7ff;
+  --color-surface-container-highest: #dae2fd;
+  --color-on-surface: #131b2e;
+  --color-on-surface-variant: #464651;
+  --color-inverse-surface: #283044;
+  --color-inverse-on-surface: #eef0ff;
+  --color-outline: #777682;
+  --color-outline-variant: #c7c5d3;
+  --color-surface-tint: #5156a7;
+  
+  --color-primary: #15196c;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #2d3282;
+  --color-on-primary-container: #999ff5;
+  --color-inverse-primary: #bfc2ff;
+  
+  --color-secondary: #004ccb;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #0262ff;
+  --color-on-secondary-container: #f3f3ff;
+  
+  --color-tertiary: #21262e;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #363c44;
+  --color-on-tertiary-container: #a1a6af;
+  
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  
+  --color-primary-fixed: #e0e0ff;
+  --color-primary-fixed-dim: #bfc2ff;
+  --color-on-primary-fixed: #070963;
+  --color-on-primary-fixed-variant: #393e8e;
+  
+  --color-secondary-fixed: #dbe1ff;
+  --color-secondary-fixed-dim: #b4c5ff;
+  --color-on-secondary-fixed: #00174b;
+  --color-on-secondary-fixed-variant: #003ea8;
+  
+  --color-tertiary-fixed: #dee3ed;
+  --color-tertiary-fixed-dim: #c1c7d0;
+  --color-on-tertiary-fixed: #161c23;
+  --color-on-tertiary-fixed-variant: #41474f;
+  
+  --color-background: #faf8ff;
+  --color-on-background: #131b2e;
+  --color-surface-variant: #dae2fd;
+
+  --spacing-gutter: 24px;
+  --spacing-margin: 32px;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-background font-sans antialiased;
+  }
+}
