@@ -1,6 +1,136 @@
+import { useState } from 'react';
 import { PartyPopper, Zap, Check, Sparkles, Info, PiggyBank, ShoppingBag, Coffee, Award, Handshake, Gauge, Clock, Coins, Quote, Heart, MessageCircle, Lightbulb, ChevronDown } from 'lucide-react';
 
+type WallFilter = 'Everyone' | 'My Circle';
+type WallAudience = 'everyone' | 'circle';
+type WallBadge = 'award' | 'lightbulb' | 'heart';
+
+type WallItem = {
+  id: number;
+  audience: WallAudience;
+  featured?: boolean;
+  author: string;
+  verb: string;
+  target: string;
+  time: string;
+  tag: string;
+  points: number;
+  initialClaps: number;
+  comments: number;
+  quote?: string;
+  body?: string;
+  media?: {
+    src: string;
+    alt: string;
+    label: string;
+  };
+  avatar: string;
+  avatarAlt: string;
+  badge: {
+    kind: WallBadge;
+    className: string;
+  };
+};
+
 export default function Dashboard() {
+  const wallItems: WallItem[] = [
+    {
+      id: 1,
+      audience: 'everyone',
+      featured: true,
+      author: 'Sarah Jenkins',
+      verb: 'celebrated',
+      target: 'Michael Chen',
+      time: '2 hours ago',
+      tag: '#CustomerObsession',
+      points: 250,
+      initialClaps: 12,
+      comments: 3,
+      quote:
+        'Michael went above and beyond to help a client during the server migration. His calm demeanor and technical expertise saved the day. Truly an inspiration to the team.',
+      avatar:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuD3AEqFg2gY-D-mjY7pmozOVUZU4sqpWbPcyv7iUuQB7LDxqks8LaZRdN7-ZBuOVy_4R94iF3_GG6y6ckJxqyIEF7pDKIaSec9St4aaxEMOOURjUDAmvk5V9IcIpgSvE70SgqbDWvgiTmIPTd1eFLRiXL9W9BfAhBX1xVsJKjql_mUJUdOvdcuJBDuh-EuGcPLJYnom5_ybSIIx-xySRWG4bJwAHe1g8bYBG_nvB2vNrniZ3Z0HvinmNGL00pd-zWLrts-S4r314gA',
+      avatarAlt: 'Sarah Jenkins',
+      badge: {
+        kind: 'award',
+        className: 'bg-amber-500',
+      },
+    },
+    {
+      id: 2,
+      audience: 'circle',
+      author: 'David Miller',
+      verb: 'shouted out',
+      target: 'The UX Team',
+      time: '5 hours ago',
+      tag: '#Innovation',
+      points: 500,
+      initialClaps: 28,
+      comments: 8,
+      quote:
+        'The new dashboard design is a game changer. The team worked tirelessly to balance data density with elegant aesthetics. Great work everyone.',
+      avatar:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuBR3fVPjaysof3dsmbln8E_ftFzFglZi56IoiOeVQbgAbJbN1vAvuLTY-tXbV8x_XS7G9xSYrK7R2DYDm9vDscQGJztgnY10-ZAH7DtQu2PHMOWGPEwOiiGVmkwM49SP3JIDBaE54bIS9OxBOZ4cC7JjYR_Og5aGfuLQdB_YA8wtN8yo1PnXqRB8RJsv_Qmcr6-khgFqWYUy5R8av9xjCG5YHKMtRoGIJb9BzH8Z-KXbBb39Vq58SNLbBHa-UO6c_KBoH6-w7CTZrw',
+      avatarAlt: 'David Miller',
+      badge: {
+        kind: 'lightbulb',
+        className: 'bg-indigo-600',
+      },
+    },
+    {
+      id: 3,
+      audience: 'everyone',
+      author: 'Jessica Wong',
+      verb: 'gave a high-five to',
+      target: "Liam O'Reilly",
+      time: 'Yesterday',
+      tag: '#TeamSpirit',
+      points: 180,
+      initialClaps: 45,
+      comments: 15,
+      body: 'Thanks for organizing the team lunch, Liam. It was exactly what we needed to recharge.',
+      media: {
+        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBtp9ugrAHEsIT9X7h4TxBJS3Vv2M3jMGsB-zODr81l2AC4TDKWJCg18ruEeY0JAi708vVAVFR2KSAnb_bG08cby1ENpjhdoBP9Ee3wRveq_NrgsqOX7hPTQ21LJfHZYB8cddkN0bYSh1ss89B93iyZg69g4Zg8dTaEB3Xf2RdcPAnYckhh85LDFRgPL1QV24Ds9u9ts1K1nAjkQ6AJRFJUeyPp2ETJgSR_QgHHmDyjwsRomHK3WZ2IJsSdcYk4EbpWyG_Zq4J12HA',
+        alt: 'Team lunch celebration',
+        label: 'View Album',
+      },
+      avatar:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuA6Cknyy34cxw0rObjCTqZBJVZvqcINJ5CdcE4bPAuKhOa6i8LJyqTyh7SneWnYDgDeJ1xrc8-PXxGhMx1kZqYs0zqNnw3ATXicr74lpTK5OO-KgVZuJMnC4vifrqkxvtRAuQZifwpp1HX8AaAgUP9LBt72eA1iGtB-1HkXkprGxRy95kF9RtoWhlRtGh5tKY63djz-mtBflR4nPUx9FKS8kjLB8NYRrooD8EWpYB6B6MOrrCOFU52cpIOT3s20PP0h8769zLshnuw',
+      avatarAlt: 'Jessica Wong',
+      badge: {
+        kind: 'heart',
+        className: 'bg-emerald-500',
+      },
+    },
+    {
+      id: 4,
+      audience: 'circle',
+      author: 'Ava Patel',
+      verb: 'recognized',
+      target: 'Support Operations',
+      time: 'Today',
+      tag: '#ServiceWin',
+      points: 320,
+      initialClaps: 18,
+      comments: 4,
+      quote:
+        'The response team kept the customer informed through every step and turned a stressful outage into a confident recovery.',
+      avatar:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCTr8OUPk3W8C9d3m0M6t0LQ8m8x4e3v8b4eS8Y1n8mR4d3z2b2m9Q0k3uQ7d9xW4nM3pY0oO5mY2kWc2Qf4sB2pQ4dJfS1X0g6rV2nP5xY6sQ4mN0lQ7tF3d2xY8pQ',
+      avatarAlt: 'Ava Patel',
+      badge: {
+        kind: 'award',
+        className: 'bg-teal-500',
+      },
+    },
+  ];
+
+  const [wallFilter, setWallFilter] = useState<WallFilter>('Everyone');
+  const [showAllRecognitions, setShowAllRecognitions] = useState(false);
+  const [clapCounts, setClapCounts] = useState<Record<number, number>>(() =>
+    Object.fromEntries(wallItems.map((item) => [item.id, item.initialClaps])),
+  );
+
   const focusItems = [
     {
       title: 'Secure a 5-star Google Review',
@@ -35,6 +165,30 @@ export default function Dashboard() {
   ];
 
   const completedFocusCount = focusItems.filter((item) => item.completed).length;
+  const visibleWallItems = wallItems.filter(
+    (item) => wallFilter === 'Everyone' || item.audience === 'circle',
+  );
+  const displayedWallItems = showAllRecognitions ? visibleWallItems : visibleWallItems.slice(0, 3);
+  const totalWallClaps = displayedWallItems.reduce((sum, item) => sum + (clapCounts[item.id] ?? item.initialClaps), 0);
+
+  const handleClap = (itemId: number) => {
+    setClapCounts((current) => ({
+      ...current,
+      [itemId]: (current[itemId] ?? 0) + 1,
+    }));
+  };
+
+  const renderBadge = (kind: WallBadge) => {
+    if (kind === 'award') {
+      return <Award className="w-3 h-3 fill-current" />;
+    }
+
+    if (kind === 'lightbulb') {
+      return <Lightbulb className="w-3 h-3 fill-current" />;
+    }
+
+    return <Heart className="w-3 h-3 fill-current" />;
+  };
 
   return (
     <div className="animate-in fade-in duration-500">
@@ -182,148 +336,148 @@ export default function Dashboard() {
         {/* Right Column: Wall of Fame */}
         <div className="lg:col-span-8">
           <div className="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100 h-full flex flex-col overflow-hidden">
-            <div className="p-6 border-b border-slate-50 flex justify-between items-center bg-linear-to-r from-white to-slate-50/30">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center">
-                  <PartyPopper className="text-secondary w-5 h-5 fill-current" />
+            <div className="p-6 border-b border-slate-50 bg-linear-to-r from-white to-slate-50/30 space-y-5">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center">
+                    <PartyPopper className="text-secondary w-5 h-5 fill-current" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-normal text-indigo-900">Wall of Fame</h2>
+                    <p className="text-[11px] text-slate-400 font-medium uppercase tracking-wide">Celebrate the moments that move the team</p>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="text-2xl font-normal text-indigo-900">Wall of Fame</h2>
-                  <p className="text-[11px] text-slate-400 font-medium uppercase tracking-wide">Celebrate our community</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    className={`px-4 py-2 text-xs font-medium rounded-full transition-all ${
+                      wallFilter === 'Everyone'
+                        ? 'bg-white text-indigo-900 shadow-sm'
+                        : 'text-slate-500 hover:text-indigo-900'
+                    }`}
+                    onClick={() => {
+                      setWallFilter('Everyone');
+                      setShowAllRecognitions(false);
+                    }}
+                  >
+                    Everyone
+                  </button>
+                  <button
+                    className={`px-4 py-2 text-xs font-medium rounded-full transition-all ${
+                      wallFilter === 'My Circle'
+                        ? 'bg-white text-indigo-900 shadow-sm'
+                        : 'text-slate-500 hover:text-indigo-900'
+                    }`}
+                    onClick={() => {
+                      setWallFilter('My Circle');
+                      setShowAllRecognitions(false);
+                    }}
+                  >
+                    My Circle
+                  </button>
                 </div>
               </div>
-              <div className="flex gap-2 p-1 bg-slate-100 rounded-full">
-                <button className="px-4 py-1.5 text-xs font-medium rounded-full transition-all text-slate-500 hover:text-indigo-900">Everyone</button>
-                <button className="px-4 py-1.5 text-xs font-medium bg-white text-indigo-900 rounded-full shadow-sm">My Circle</button>
+
+              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                <span className="px-3 py-1 rounded-full bg-white border border-slate-100 font-medium">{displayedWallItems.length} recognitions</span>
+                <span className="px-3 py-1 rounded-full bg-white border border-slate-100 font-medium">{totalWallClaps} claps today</span>
+                <span className="px-3 py-1 rounded-full bg-white border border-slate-100 font-medium">{wallFilter} feed</span>
               </div>
             </div>
-            
-            {/* Recognition Feed */}
-            <div className="flex-1 p-6 space-y-8 overflow-y-auto">
-              
-              {/* Feed Item 1 */}
-              <div className="group relative bg-white transition-all duration-300">
-                <div className="flex gap-4">
-                    <div className="relative shrink-0">
-                    <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-secondary shadow-[0_0_0_2px_white,0_0_0_4px_#0262ff] rotate-3 group-hover:rotate-0 transition-transform">
-                      <img alt="Sarah Jenkins" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3AEqFg2gY-D-mjY7pmozOVUZU4sqpWbPcyv7iUuQB7LDxqks8LaZRdN7-ZBuOVy_4R94iF3_GG6y6ckJxqyIEF7pDKIaSec9St4aaxEMOOURjUDAmvk5V9IcIpgSvE70SgqbDWvgiTmIPTd1eFLRiXL9W9BfAhBX1xVsJKjql_mUJUdOvdcuJBDuh-EuGcPLJYnom5_ybSIIx-xySRWG4bJwAHe1g8bYBG_nvB2vNrniZ3Z0HvinmNGL00pd-zWLrts-S4r314gA" />
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 bg-amber-500 text-white rounded-full p-1.5 border-2 border-white shadow-md">
-                      <Award className="w-3 h-3 fill-current" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start mb-2">
-                      <div>
-                        <p className="text-sm font-medium text-indigo-900">Sarah Jenkins <span className="text-slate-400 font-normal">celebrated</span> Michael Chen</p>
-                        <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> 2 hours ago • <span className="text-secondary font-medium">#CustomerObsession</span>
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-1 text-teal-500 bg-teal-50 px-2 py-1 rounded-lg border border-teal-100">
-                        <span className="text-xs font-black">+250</span>
-                        <Coins className="w-3 h-3 fill-current" />
-                      </div>
-                    </div>
-                    <div className="mt-3 bg-linear-to-br from-white to-blue-50 p-5 rounded-2xl border border-blue-50 italic text-indigo-900/80 text-base relative shadow-sm">
-                      "Michael went above and beyond to help a client during the server migration. His calm demeanor and technical expertise saved the day! Truly an inspiration to the team."
-                      <Quote className="absolute -top-3 -left-2 text-indigo-200 w-8 h-8 opacity-50 fill-current" />
-                    </div>
-                    <div className="mt-4 flex items-center gap-6">
-                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105">
-                        <Heart className="w-5 h-5 fill-current" /> 12 Claps
-                      </button>
-                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105">
-                        <MessageCircle className="w-5 h-5" /> 3 Comments
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              {/* Feed Item 2 */}
-              <div className="group relative bg-white transition-all duration-300">
-                <div className="flex gap-4">
-                  <div className="relative shrink-0">
-                    <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-slate-100 -rotate-2 group-hover:rotate-0 transition-transform">
-                      <img alt="David Miller" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR3fVPjaysof3dsmbln8E_ftFzFglZi56IoiOeVQbgAbJbN1vAvuLTY-tXbV8x_XS7G9xSYrK7R2DYDm9vDscQGJztgnY10-ZAH7DtQu2PHMOWGPEwOiiGVmkwM49SP3JIDBaE54bIS9OxBOZ4cC7JjYR_Og5aGfuLQdB_YA8wtN8yo1PnXqRB8RJsv_Qmcr6-khgFqWYUy5R8av9xjCG5YHKMtRoGIJb9BzH8Z-KXbBb39Vq58SNLbBHa-UO6c_KBoH6-w7CTZrw" />
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 bg-indigo-600 text-white rounded-full p-1.5 border-2 border-white shadow-md">
-                      <Lightbulb className="w-3 h-3 fill-current" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start mb-2">
-                      <div>
-                        <p className="text-sm font-medium text-indigo-900">David Miller <span className="text-slate-400 font-normal">shouted out</span> The UX Team</p>
-                        <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> 5 hours ago • <span className="text-secondary font-medium">#Innovation</span>
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-1 text-teal-500 bg-teal-50 px-2 py-1 rounded-lg border border-teal-100">
-                        <span className="text-xs font-black">+500</span>
-                        <Coins className="w-3 h-3 fill-current" />
-                      </div>
-                    </div>
-                    <div className="mt-3 bg-slate-50/50 p-5 rounded-2xl border border-slate-100 italic text-indigo-900/80 text-base relative">
-                      "The new dashboard design is a game changer. The team worked tirelessly to balance data density with elegant aesthetics. Great work everyone!"
-                      <Quote className="absolute -top-3 -left-2 text-slate-200 w-8 h-8 fill-current" />
-                    </div>
-                    <div className="mt-4 flex items-center gap-6">
-                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
-                        <Heart className="w-5 h-5" /> 28 Claps
-                      </button>
-                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
-                        <MessageCircle className="w-5 h-5" /> 8 Comments
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="flex-1 p-6 space-y-6 overflow-y-auto">
+              {displayedWallItems.map((item) => {
+                const claps = clapCounts[item.id] ?? item.initialClaps;
 
-              {/* Feed Item 3 */}
-              <div className="group relative bg-white transition-all duration-300">
-                <div className="flex gap-4">
-                  <div className="relative shrink-0">
-                    <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-slate-100">
-                      <img alt="Jessica Wong" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Cknyy34cxw0rObjCTqZBJVZvqcINJ5CdcE4bPAuKhOa6i8LJyqTyh7SneWnYDgDeJ1xrc8-PXxGhMx1kZqYs0zqNnw3ATXicr74lpTK5OO-KgVZuJMnC4vifrqkxvtRAuQZifwpp1HX8AaAgUP9LBt72eA1iGtB-1HkXkprGxRy95kF9RtoWhlRtGh5tKY63djz-mtBflR4nPUx9FKS8kjLB8NYRrooD8EWpYB6B6MOrrCOFU52cpIOT3s20PP0h8769zLshnuw" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start mb-2">
-                      <div>
-                        <p className="text-sm font-medium text-indigo-900">Jessica Wong <span className="text-slate-400 font-normal">gave a high-five to</span> Liam O'Reilly</p>
-                        <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> Yesterday • <span className="text-secondary font-medium">#TeamSpirit</span>
-                        </p>
+                return (
+                  <div
+                    key={item.id}
+                    className={`group relative bg-white transition-all duration-300 rounded-3xl border p-5 shadow-sm hover:-translate-y-0.5 hover:shadow-md ${
+                      item.featured ? 'border-secondary/20 ring-1 ring-secondary/10' : 'border-slate-100'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="relative shrink-0">
+                        <div
+                          className={`w-14 h-14 rounded-2xl overflow-hidden border-2 ${
+                            item.featured ? 'border-secondary shadow-[0_0_0_2px_white,0_0_0_4px_#0262ff] rotate-3' : 'border-slate-100 -rotate-2'
+                          } group-hover:rotate-0 transition-transform`}
+                        >
+                          <img alt={item.avatarAlt} className="w-full h-full object-cover" src={item.avatar} />
+                        </div>
+                        <div className={`absolute -bottom-2 -right-2 ${item.badge.className} text-white rounded-full p-1.5 border-2 border-white shadow-md`}>
+                          {renderBadge(item.badge.kind)}
+                        </div>
                       </div>
-                    </div>
-                    <p className="mt-3 text-indigo-900/80 text-base">Thanks for organizing the team lunch, Liam! It was exactly what we needed to recharge. 🥗✨</p>
-                    <div className="mt-4 rounded-2xl overflow-hidden h-48 w-full relative group shadow-sm border border-slate-100">
-                      <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtp9ugrAHEsIT9X7h4TxBJS3Vv2M3jMGsB-zODr81l2AC4TDKWJCg18ruEeY0JAi708vVAVFR2KSAnb_bG08cby1ENpjhdoBP9Ee3wRveq_NrgsqOX7hPTQ21LJfHZYB8cddkN0bYSh1ss89B93iyZg69g4Zg8dTaEB3Xf2RdcPAnYckhh85LDFRgPL1QV24Ds9u9ts1K1nAjkQ6AJRFJUeyPp2ETJgSR_QgHHmDyjwsRomHK3WZ2IJsSdcYk4EbpWyG_Zq4J12HA" />
-                      <div className="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-                        <span className="bg-white text-indigo-900 px-4 py-2 rounded-full font-medium text-sm shadow-lg">View Album</span>
-                      </div>
-                    </div>
-                    <div className="mt-4 flex items-center gap-6">
-                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
-                        <Heart className="w-5 h-5" /> 45 Claps
-                      </button>
-                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
-                        <MessageCircle className="w-5 h-5" /> 15 Comments
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-3 mb-3">
+                          <div className="min-w-0">
+                            <p className="text-sm font-medium text-indigo-900">
+                              {item.author} <span className="text-slate-400 font-normal">{item.verb}</span> {item.target}
+                            </p>
+                            <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1 flex-wrap">
+                              <Clock className="w-3 h-3" />
+                              {item.time} • <span className="text-secondary font-medium">{item.tag}</span>
+                              {item.audience === 'circle' ? <span className="text-slate-300">• My Circle</span> : null}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-1 text-teal-500 bg-teal-50 px-3 py-1.5 rounded-xl border border-teal-100 shrink-0">
+                            <span className="text-xs font-black">+{item.points}</span>
+                            <Coins className="w-3 h-3 fill-current" />
+                          </div>
+                        </div>
+
+                        {item.quote ? (
+                          <div className={`mt-2 p-5 rounded-2xl border italic text-indigo-900/80 text-base relative shadow-sm ${item.featured ? 'bg-linear-to-br from-white to-blue-50 border-blue-50' : 'bg-slate-50/60 border-slate-100'}`}>
+                            {item.quote}
+                            <Quote className={`absolute -top-3 -left-2 w-8 h-8 fill-current ${item.featured ? 'text-indigo-200 opacity-50' : 'text-slate-200'}`} />
+                          </div>
+                        ) : null}
+
+                        {item.body ? <p className="mt-3 text-indigo-900/80 text-base">{item.body}</p> : null}
+
+                        {item.media ? (
+                          <div className="mt-4 rounded-2xl overflow-hidden h-48 w-full relative group shadow-sm border border-slate-100">
+                            <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={item.media.src} alt={item.media.alt} />
+                            <div className="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                              <span className="bg-white text-indigo-900 px-4 py-2 rounded-full font-medium text-sm shadow-lg">{item.media.label}</span>
+                            </div>
+                          </div>
+                        ) : null}
+
+                        <div className="mt-4 flex items-center gap-6">
+                          <button
+                            className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105"
+                            onClick={() => handleClap(item.id)}
+                            type="button"
+                          >
+                            <Heart className="w-5 h-5 fill-current" /> {claps} Claps
+                          </button>
+                          <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105" type="button">
+                            <MessageCircle className="w-5 h-5" /> {item.comments} Comments
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {displayedWallItems.length === 0 ? (
+                <div className="text-center py-12 text-slate-400">
+                  No recognitions match this view yet.
+                </div>
+              ) : null}
             </div>
-            
-            {/* Load More */}
+
             <div className="p-6 bg-slate-50/50 border-t border-slate-50 text-center">
-              <button className="text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors flex items-center justify-center gap-2 mx-auto">
-                <ChevronDown className="w-4 h-4" />
-                See more recognitions
+              <button
+                className="text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors flex items-center justify-center gap-2 mx-auto"
+                onClick={() => setShowAllRecognitions((current) => !current)}
+                type="button"
+              >
+                <ChevronDown className={`w-4 h-4 transition-transform ${showAllRecognitions ? 'rotate-180' : ''}`} />
+                {showAllRecognitions ? 'Show fewer recognitions' : 'See more recognitions'}
               </button>
             </div>
           </div>
