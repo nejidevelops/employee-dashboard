@@ -2,7 +2,7 @@ import { List, Banknote, Star, Cake, PartyPopper, Coins, Heart, MessageCircle, B
 
 export default function Activity() {
   return (
-    <div className="max-w-6xl mx-auto animate-in fade-in duration-500">
+    <div className="mx-auto animate-in fade-in duration-500">
       <div className="grid grid-cols-12 gap-6">
         
         {/* Left Sidebar Filters (Desktop) */}
