@@ -130,6 +130,7 @@ export default function Dashboard() {
   const [clapCounts, setClapCounts] = useState<Record<number, number>>(() =>
     Object.fromEntries(wallItems.map((item) => [item.id, item.initialClaps])),
   );
+  const [userClaps, setUserClaps] = useState<Set<number>>(new Set());
 
   const focusItems = [
     {
@@ -172,9 +173,21 @@ export default function Dashboard() {
   const totalWallClaps = displayedWallItems.reduce((sum, item) => sum + (clapCounts[item.id] ?? item.initialClaps), 0);
 
   const handleClap = (itemId: number) => {
-    setClapCounts((current) => ({
-      ...current,
-      [itemId]: (current[itemId] ?? 0) + 1,
+    const hasClapped = userClaps.has(itemId);
+
+    setUserClaps((current) => {
+      const newClaps = new Set(current);
+      if (hasClapped) {
+        newClaps.delete(itemId);
+      } else {
+        newClaps.add(itemId);
+      }
+      return newClaps;
+    });
+
+    setClapCounts((counts) => ({
+      ...counts,
+      [itemId]: (counts[itemId] ?? 0) + (hasClapped ? -1 : 1),
     }));
   };
 
@@ -447,11 +460,17 @@ export default function Dashboard() {
 
                         <div className="mt-4 flex items-center gap-6">
                           <button
-                            className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105"
+                            className={`flex items-center gap-2 text-xs font-medium transition-all hover:scale-105 ${
+                              userClaps.has(item.id)
+                                ? 'text-red-500 hover:text-red-600'
+                                : 'text-slate-500 hover:text-secondary'
+                            }`}
                             onClick={() => handleClap(item.id)}
                             type="button"
                           >
-                            <Heart className="w-5 h-5 fill-current" /> {claps} Claps
+                            <Heart className={`w-5 h-5 ${
+                              userClaps.has(item.id) ? 'fill-current' : 'fill-none stroke-current stroke-1.5'
+                            }`} /> {claps} Claps
                           </button>
                           <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105" type="button">
                             <MessageCircle className="w-5 h-5" /> {item.comments} Comments
