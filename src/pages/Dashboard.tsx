@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { PartyPopper, Zap, Check, Sparkles, Info, PiggyBank, ShoppingBag, Coffee, Award, Handshake, Gauge, Clock, Coins, Quote, Heart, MessageCircle, Lightbulb, ChevronDown } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { PartyPopper, Zap, Check, Sparkles, Info, PiggyBank, ShoppingBag, Coffee, Award, Handshake, Gauge, Clock, Coins, Quote, Heart, MessageCircle, Lightbulb, ChevronDown, ArrowDown } from 'lucide-react';
 
 type WallFilter = 'Everyone' | 'My Circle';
 type WallAudience = 'everyone' | 'circle';
@@ -195,6 +195,82 @@ export default function Dashboard() {
   const [openCommentInput, setOpenCommentInput] = useState<number | null>(null);
   const [commentTexts, setCommentTexts] = useState<Record<number, string>>({});
   const [userCommentsList, setUserCommentsList] = useState<Record<number, Array<{ text: string; author: string }>>>({});
+  const [showEarningHistory, setShowEarningHistory] = useState(false);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    if (showEarningHistory) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showEarningHistory]);
+
+  const earningHistory = [
+    {
+      id: 1,
+      type: 'Customer Gratitude',
+      description: 'Quick help with order #124',
+      amount: 15.00,
+      date: 'May 6, 2026',
+      time: '2:30 PM',
+      icon: ShoppingBag,
+      color: 'teal',
+    },
+    {
+      id: 2,
+      type: 'Coffee Gift',
+      description: 'Sarah J. sent a coffee for the great presentation',
+      amount: 5.00,
+      date: 'May 6, 2026',
+      time: '1:15 PM',
+      icon: Coffee,
+      color: 'amber',
+    },
+    {
+      id: 3,
+      type: 'Team Collaboration',
+      description: 'Helped James with quarterly report',
+      amount: 10.00,
+      date: 'May 5, 2026',
+      time: '4:45 PM',
+      icon: Handshake,
+      color: 'blue',
+    },
+    {
+      id: 4,
+      type: 'Customer Gratitude',
+      description: 'Resolved customer complaint #892',
+      amount: 20.00,
+      date: 'May 5, 2026',
+      time: '11:20 AM',
+      icon: ShoppingBag,
+      color: 'teal',
+    },
+    {
+      id: 5,
+      type: 'Bonus Achievement',
+      description: 'Completed quarterly target early',
+      amount: 50.00,
+      date: 'May 4, 2026',
+      time: '3:00 PM',
+      icon: Coins,
+      color: 'yellow',
+    },
+    {
+      id: 6,
+      type: 'Peer Recognition',
+      description: 'Great mentoring session with new team member',
+      amount: 8.00,
+      date: 'May 3, 2026',
+      time: '2:15 PM',
+      icon: Award,
+      color: 'purple',
+    },
+  ];
+
+  const totalEarnings = earningHistory.reduce((sum, item) => sum + item.amount, 0);
 
   const focusItems = [
     {
@@ -310,7 +386,7 @@ export default function Dashboard() {
       {/* Bento Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Individual Focus & Progress */}
-        <div className="lg:col-span-4 space-y-6">
+        <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-6 lg:h-fit">
           
           {/* Today's Focus */}
           <div className="bg-white p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100">
@@ -400,7 +476,11 @@ export default function Dashboard() {
                 <span className="font-medium text-amber-500">+$5.00</span>
               </div>
             </div>
-            <button className="w-full mt-4 py-2.5 text-xs font-medium text-indigo-900 hover:bg-amber-100/50 rounded-lg transition-colors border border-dashed border-amber-200">
+            <button
+              onClick={() => setShowEarningHistory(true)}
+              className="w-full mt-4 py-2.5 text-xs font-medium text-indigo-900 hover:bg-amber-100/50 rounded-lg transition-colors border border-dashed border-amber-200"
+              type="button"
+            >
               View Earning History
             </button>
           </div>
@@ -435,7 +515,7 @@ export default function Dashboard() {
         </div>
 
         {/* Right Column: Wall of Fame */}
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-8 lg:sticky lg:top-6">
           <div className="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100 flex flex-col overflow-hidden">
             <div className="p-6 border-b border-slate-50 bg-linear-to-r from-white to-slate-50/30 space-y-5">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -667,6 +747,92 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
+      {/* Earning History Modal */}
+      {showEarningHistory ? (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] flex flex-col">
+            {/* Modal Header */}
+            <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center">
+                  <PiggyBank className="text-amber-500 w-5 h-5 fill-current" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold text-indigo-900">Earning History</h2>
+                  <p className="text-xs text-slate-400 mt-0.5">Track all your earnings</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowEarningHistory(false)}
+                className="text-slate-400 hover:text-slate-600 transition-colors"
+                type="button"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Total Earnings Summary */}
+            <div className="px-6 pt-6 pb-3 bg-linear-to-r from-amber-50 to-white border-b border-amber-100">
+              <p className="text-xs text-slate-500 font-medium uppercase tracking-wide mb-2">Total Earnings</p>
+              <p className="text-3xl font-semibold text-amber-600">${totalEarnings.toFixed(2)}</p>
+              <p className="text-xs text-slate-400 mt-1">{earningHistory.length} transactions</p>
+            </div>
+
+            {/* Earnings List */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-3">
+              {earningHistory.map((earning) => {
+                const IconComponent = earning.icon;
+                const colorClasses = {
+                  teal: 'bg-teal-500/10 text-teal-500',
+                  amber: 'bg-amber-500/10 text-amber-500',
+                  blue: 'bg-blue-500/10 text-blue-500',
+                  yellow: 'bg-yellow-500/10 text-yellow-500',
+                  purple: 'bg-purple-500/10 text-purple-500',
+                };
+
+                return (
+                  <div key={earning.id} className="flex items-start gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${colorClasses[earning.color as keyof typeof colorClasses]}`}>
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <p className="text-sm font-medium text-indigo-900">{earning.type}</p>
+                          <p className="text-xs text-slate-500 mt-1">{earning.description}</p>
+                          <p className="text-xs text-slate-400 mt-2">{earning.date} at {earning.time}</p>
+                        </div>
+                        <p className="text-sm font-semibold text-teal-600 shrink-0">+${earning.amount.toFixed(2)}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-6 border-t border-slate-100 bg-slate-50 flex gap-3">
+              <button
+                onClick={() => setShowEarningHistory(false)}
+                className="flex-1 py-2.5 px-4 bg-white border border-slate-200 rounded-lg font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+                type="button"
+              >
+                Close
+              </button>
+              <button
+                className="flex-1 py-2.5 px-4 bg-amber-500 rounded-lg font-medium text-white hover:bg-amber-600 transition-colors flex items-center justify-center gap-2"
+                type="button"
+              >
+                <ArrowDown className="w-4 h-4" />
+                Export
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
