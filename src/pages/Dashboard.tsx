@@ -5,6 +5,13 @@ type WallFilter = 'Everyone' | 'My Circle';
 type WallAudience = 'everyone' | 'circle';
 type WallBadge = 'award' | 'lightbulb' | 'heart';
 
+type Comment = {
+  author: string;
+  avatar: string;
+  text: string;
+  time: string;
+};
+
 type WallItem = {
   id: number;
   audience: WallAudience;
@@ -17,6 +24,7 @@ type WallItem = {
   points: number;
   initialClaps: number;
   comments: number;
+  initialComments?: Comment[];
   quote?: string;
   body?: string;
   media?: {
@@ -46,6 +54,20 @@ export default function Dashboard() {
       points: 250,
       initialClaps: 12,
       comments: 3,
+      initialComments: [
+        {
+          author: 'Rachel Kim',
+          avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCEpYMXllBQbEC2N6LCakzKYbBrPMteSJ0dGkxGzoMZ1T25-x8MlUtqHANOy7A8xgfjaatttvJE7zA7WKa92j0REGx001AWiQ19k4wMfwvifzWXpX0BpH-H0iydgD6TmlzcdmOsB65D4NHIZ7lKJUuw1XGd4mXnCl6CjNnDk_1i8yW9Tvxyx-7Yb_VJc4r5nzTSGkp4NDu6e-8YPXQAQDGriHYl8TQQ6Vag9kIbRridB0hhkqBIOZsI2vxMmi2pCvojcr4eCqSIjpQ',
+          text: 'Absolutely! Michael is always the one I turn to when things get complex.',
+          time: '1 hour ago',
+        },
+        {
+          author: 'Marcus Chen',
+          avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuABkUemtkGiZdDib_6iCDVlPIGCjOVfEyN9dgCN-wPvxCHkc6FHHgFAAMCsk1lsn-hWZ9yaRQYNNgXAecn-Wj_623Q-zxARf4N-iS_Qp2-VzLfgoB0-6IBrmRgcmVbSomDrfWBewVJowEpUbU8HA7ogb-uOtyTtnZCckFHtb18i7HEgtYoymv8JiWmD26l0V7sCh6hkHT7d2qaWmCmFj-5asAo_wIzVt_dQ2pjrBCsKhZp_UkRrG3kr-Hp9uszb0l8ufrT1fxzSVlA',
+          text: 'Thanks for recognizing Michael. Team work makes the dream work! 🙌',
+          time: '45 minutes ago',
+        },
+      ],
       quote:
         'Michael went above and beyond to help a client during the server migration. His calm demeanor and technical expertise saved the day. Truly an inspiration to the team.',
       avatar:
@@ -67,6 +89,20 @@ export default function Dashboard() {
       points: 500,
       initialClaps: 28,
       comments: 8,
+      initialComments: [
+        {
+          author: 'Emma Rodriguez',
+          avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCYXTbMjT5Bcgshp5AWoa6JNPzh0SHKSRvatF6vOBKlPc19MYe9eRopVwqi1xE7dycYgzK6brBHFxTwSZdgckw7gGS9vHhgMVGfGgNQ4rSIy2kIO6ChN5bb_3mm9OoHQrzw6CoowCFxXqf_v1UFz5ksPqK_To2Rl5SHOzTdWNDxOfbUuGHmdaSwWceuNFS4IVPPXYCtv1BR-esDx1qsbffDnzAOGkXQGrCq1JEuxhieK30ec4uWMnYjlkfESb3wO2nT6b-oU2hqf38',
+          text: 'This redesign is everything! So much cleaner and intuitive.',
+          time: '4 hours ago',
+        },
+        {
+          author: 'James Park',
+          avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD30YHGidHx-4K1e_T6zrT9rUwndDLK7aTt8Glx7-lRhahFt2mtvYoAeqx-Txs-be7pKy1PLwJ5swl7O47Q6gQD09da8gU06wh4yhRw5sMiVy2Ywzysx_bxtNDlkYTKJg7r3U8Ee13cLDhnNvep5BL93FWO15daFqkdk8OaRt1Lli0Ovkd3LMH9fvi4VqfOyj8TncRUbrSxVv__8kiin7SMhMNEWYc8iY7FrvQMibCbFFRFg_JVAumFnX6b3vFLfd5UXQIaHzXfgn0',
+          text: 'The UX team really outdid themselves. Perfect balance!',
+          time: '3 hours ago',
+        },
+      ],
       quote:
         'The new dashboard design is a game changer. The team worked tirelessly to balance data density with elegant aesthetics. Great work everyone.',
       avatar:
@@ -88,6 +124,20 @@ export default function Dashboard() {
       points: 180,
       initialClaps: 45,
       comments: 15,
+      initialComments: [
+        {
+          author: 'Sarah Jenkins',
+          avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3AEqFg2gY-D-mjY7pmozOVUZU4sqpWbPcyv7iUuQB7LDxqks8LaZRdN7-ZBuOVy_4R94iF3_GG6y6ckJxqyIEF7pDKIaSec9St4aaxEMOOURjUDAmvk5V9IcIpgSvE70SgqbDWvgiTmIPTd1eFLRiXL9W9BfAhBX1xVsJKjql_mUJUdOvdcuJBDuh-EuGcPLJYnom5_ybSIIx-xySRWG4bJwAHe1g8bYBG_nvB2vNrniZ3Z0HvinmNGL00pd-zWLrts-S4r314gA',
+          text: 'One of the best team lunches we\'ve had! Great vibes.',
+          time: '20 hours ago',
+        },
+        {
+          author: 'David Miller',
+          avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBR3fVPjaysof3dsmbln8E_ftFzFglZi56IoiOeVQbgAbJbN1vAvuLTY-tXbV8x_XS7G9xSYrK7R2DYDm9vDscQGJztgnY10-ZAH7DtQu2PHMOWGPEwOiiGVmkwM49SP3JIDBaE54bIS9OxBOZ4cC7JjYR_Og5aGfuLQdB_YA8wtN8yo1PnXqRB8RJsv_Qmcr6-khgFqWYUy5R8av9xjCG5YHKMtRoGIJb9BzH8Z-KXbBb39Vq58SNLbBHa-UO6c_KBoH6-w7CTZrw',
+          text: 'Count me in for the next one! 🎉',
+          time: '18 hours ago',
+        },
+      ],
       body: 'Thanks for organizing the team lunch, Liam. It was exactly what we needed to recharge.',
       media: {
         src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBtp9ugrAHEsIT9X7h4TxBJS3Vv2M3jMGsB-zODr81l2AC4TDKWJCg18ruEeY0JAi708vVAVFR2KSAnb_bG08cby1ENpjhdoBP9Ee3wRveq_NrgsqOX7hPTQ21LJfHZYB8cddkN0bYSh1ss89B93iyZg69g4Zg8dTaEB3Xf2RdcPAnYckhh85LDFRgPL1QV24Ds9u9ts1K1nAjkQ6AJRFJUeyPp2ETJgSR_QgHHmDyjwsRomHK3WZ2IJsSdcYk4EbpWyG_Zq4J12HA',
@@ -113,6 +163,14 @@ export default function Dashboard() {
       points: 320,
       initialClaps: 18,
       comments: 4,
+      initialComments: [
+        {
+          author: 'Tom Wilson',
+          avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_OMfhKDeuYR6R-LgOWlh7PPtfEpiY7T0cyT8mp9md_YqKdG92H5Dob-K1L3ZDQPpHoasKCve0iGJy6sYJLugK3QX7ChVvrWEl9vaLass65N1sdru6TN3ZmLN93kOynriGamLseU',
+          text: 'This team always goes the extra mile. Respect! 👏',
+          time: '2 hours ago',
+        },
+      ],
       quote:
         'The response team kept the customer informed through every step and turned a stressful outage into a confident recovery.',
       avatar:
@@ -518,14 +576,42 @@ export default function Dashboard() {
 
                         {openCommentInput === item.id ? (
                           <div className="mt-4 space-y-3 pt-4 border-t border-slate-100">
-                            {userCommentsList[item.id]?.map((comment, idx) => (
-                              <div key={idx} className="bg-slate-50 p-3 rounded-xl">
-                                <p className="text-xs font-medium text-indigo-900">{comment.author}</p>
-                                <p className="text-sm text-slate-700 mt-1">{comment.text}</p>
+                            {/* Initial/Existing Comments */}
+                            {item.initialComments?.map((comment, idx) => (
+                              <div key={`initial-${idx}`} className="flex gap-3">
+                                <img
+                                  alt={comment.author}
+                                  className="w-8 h-8 rounded-full object-cover shrink-0"
+                                  src={comment.avatar}
+                                />
+                                <div className="flex-1 min-w-0">
+                                  <div className="bg-slate-100 rounded-2xl px-3 py-2">
+                                    <p className="text-xs font-medium text-indigo-900">{comment.author}</p>
+                                    <p className="text-sm text-slate-700">{comment.text}</p>
+                                  </div>
+                                  <p className="text-xs text-slate-400 mt-1">{comment.time}</p>
+                                </div>
                               </div>
                             ))}
 
-                            <div className="flex gap-2">
+                            {/* User Added Comments */}
+                            {userCommentsList[item.id]?.map((comment, idx) => (
+                              <div key={`user-${idx}`} className="flex gap-3">
+                                <div className="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center text-xs font-bold shrink-0">
+                                  Y
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="bg-secondary/10 rounded-2xl px-3 py-2 border border-secondary/20">
+                                    <p className="text-xs font-medium text-secondary">{comment.author}</p>
+                                    <p className="text-sm text-slate-700">{comment.text}</p>
+                                  </div>
+                                  <p className="text-xs text-slate-400 mt-1">Just now</p>
+                                </div>
+                              </div>
+                            ))}
+
+                            {/* Comment Input */}
+                            <div className="flex gap-2 pt-2">
                               <input
                                 type="text"
                                 placeholder="Add a comment..."
