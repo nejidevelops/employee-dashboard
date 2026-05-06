@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PartyPopper, Zap, Check, Sparkles, Info, PiggyBank, ShoppingBag, Coffee, Award, Handshake, Gauge, Clock, Coins, Quote, Heart, MessageCircle, Lightbulb, ChevronDown, ArrowDown } from 'lucide-react';
 
 type WallFilter = 'Everyone' | 'My Circle';
@@ -196,6 +197,7 @@ export default function Dashboard() {
   const [commentTexts, setCommentTexts] = useState<Record<number, string>>({});
   const [userCommentsList, setUserCommentsList] = useState<Record<number, Array<{ text: string; author: string }>>>({});
   const [showEarningHistory, setShowEarningHistory] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -395,12 +397,15 @@ export default function Dashboard() {
           <h1 className="text-4xl font-medium text-on-background tracking-tight">Good morning, Alex! 👋</h1>
           <p className="text-on-surface-variant text-base mt-1">Ready for another day of making an impact?</p>
         </div>
-        <div className="flex gap-3">
-          <button className="bg-secondary text-white px-6 py-3 rounded-xl font-medium flex items-center gap-2 hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 active:scale-95">
-            <PartyPopper className="w-5 h-5 fill-current" />
-            Give Zola
-          </button>
-        </div>
+          <div className="flex gap-3">
+            <button
+              className="bg-secondary text-white px-6 py-3 rounded-xl font-medium flex items-center gap-2 hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 active:scale-95"
+              type="button"
+            >
+              <PartyPopper className="w-5 h-5 fill-current" />
+              Give Zola
+            </button>
+          </div>
       </div>
 
       {/* Bento Grid Layout */}
@@ -528,7 +533,9 @@ export default function Dashboard() {
                 <span className="text-[10px] font-medium text-center">Velocity</span>
               </div>
             </div>
-            <button className="w-full mt-6 py-2.5 bg-slate-50 text-indigo-700 font-medium text-sm rounded-xl hover:bg-indigo-100 transition-colors">
+            <button 
+              onClick={() => navigate('/trophy-room')}
+            className="w-full mt-6 py-2.5 bg-slate-50 text-indigo-700 font-medium text-sm rounded-xl hover:bg-indigo-100 transition-colors">
               View Trophy Room
             </button>
           </div>

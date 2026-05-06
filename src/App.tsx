@@ -5,6 +5,7 @@ import Activity from './pages/Activity';
 import Scorecard from './pages/Scorecard';
 import Leaderboard from './pages/Leaderboard';
 import Profile from './pages/Profile';
+import TrophyRoom from './pages/TrophyRoom';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="scorecard" element={<Scorecard />} />
           <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="trophy-room" element={<TrophyRoom />} />
         </Route>
       </Routes>
     </BrowserRouter>
