@@ -1,6 +1,41 @@
 import { PartyPopper, Zap, Check, Sparkles, Info, PiggyBank, ShoppingBag, Coffee, Award, Handshake, Gauge, Clock, Coins, Quote, Heart, MessageCircle, Lightbulb, ChevronDown } from 'lucide-react';
 
 export default function Dashboard() {
+  const focusItems = [
+    {
+      title: 'Secure a 5-star Google Review',
+      subtext: 'Goal: 1 review',
+      progress: '0/1',
+      completed: false,
+      itemClass: 'bg-white border border-slate-100 hover:border-blue-400',
+      indicatorClass: 'border-2 border-slate-200',
+      titleClass: 'text-on-background',
+      subtextClass: 'text-slate-400',
+    },
+    {
+      title: 'Maintain NPS score above 75 today',
+      subtext: 'Current: 86 NPS',
+      progress: '',
+      completed: true,
+      itemClass: 'bg-slate-50/50 border border-transparent hover:border-slate-200',
+      indicatorClass: 'border-2 border-teal-500 bg-teal-500/10 flex items-center justify-center',
+      titleClass: 'text-slate-500 line-through',
+      subtextClass: 'text-teal-500 font-medium',
+    },
+    {
+      title: 'Complete 100% seat belt usage',
+      subtext: 'Safety compliance goal',
+      progress: '',
+      completed: false,
+      itemClass: 'bg-white border border-slate-100 hover:border-secondary/30',
+      indicatorClass: 'border-2 border-slate-200',
+      titleClass: 'text-on-background',
+      subtextClass: 'text-slate-400',
+    },
+  ];
+
+  const completedFocusCount = focusItems.filter((item) => item.completed).length;
+
   return (
     <div className="animate-in fade-in duration-500">
       {/* Header Section */}
@@ -29,35 +64,28 @@ export default function Dashboard() {
                 <Zap className="text-amber-500 w-5 h-5 fill-current" />
                 Today's Focus
               </h3>
-              <span className="text-xs font-medium text-slate-400 bg-slate-50 px-2 py-1 rounded">1/3 Done</span>
+              <span className="text-xs font-medium text-slate-400 bg-slate-50 px-2 py-1 rounded">
+                {completedFocusCount}/{focusItems.length} Done
+              </span>
             </div>
             <ul className="space-y-3">
-              <li className="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-100 hover:border-blue-400 transition-colors cursor-pointer group">
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full border-2 border-slate-200"></div>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium text-on-background">Secure a 5-star Google Review</span>
-                    <span className="text-[10px] text-slate-400">Goal: 1 review</span>
+              {focusItems.map((item) => (
+                <li
+                  key={item.title}
+                  className={`flex items-center justify-between p-3 rounded-xl transition-colors cursor-pointer group ${item.itemClass}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-6 h-6 rounded-full ${item.indicatorClass}`}>
+                      {item.completed ? <Check className="w-4 h-4 text-teal-500" strokeWidth={4} /> : null}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className={`text-sm font-medium ${item.titleClass}`}>{item.title}</span>
+                      <span className={`text-[10px] ${item.subtextClass}`}>{item.subtext}</span>
+                    </div>
                   </div>
-                </div>
-                <span className="text-[10px] font-medium text-slate-400">0/1</span>
-              </li>
-              <li className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 border border-transparent hover:border-slate-200 transition-colors cursor-pointer group">
-                <div className="w-6 h-6 rounded-full border-2 border-teal-500 bg-teal-500/10 flex items-center justify-center">
-                  <Check className="w-4 h-4 text-teal-500" strokeWidth={4} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium text-slate-500 line-through">Maintain NPS score above 75 today</span>
-                  <span className="text-[10px] text-teal-500 font-medium">Current: 86 NPS</span>
-                </div>
-              </li>
-              <li className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-100 hover:border-secondary/30 transition-colors cursor-pointer">
-                <div className="w-6 h-6 rounded-full border-2 border-slate-200"></div>
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium text-on-background">Complete 100% seat belt usage</span>
-                  <span className="text-[10px] text-slate-400">Safety compliance goal</span>
-                </div>
-              </li>
+                  {item.progress ? <span className="text-[10px] font-medium text-slate-400">{item.progress}</span> : null}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -73,7 +101,7 @@ export default function Dashboard() {
                 <span className="text-teal-500 font-medium text-sm">Points available</span>
               </div>
               <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mt-4">
-                <div className="bg-gradient-to-r from-primary to-secondary h-full rounded-full w-[75%]"></div>
+                <div className="bg-linear-to-r from-primary to-secondary h-full rounded-full w-[75%]"></div>
               </div>
               <p className="text-[11px] text-on-surface-variant mt-3 font-normal flex items-center gap-1">
                 <Info className="w-3 h-3" />
@@ -83,7 +111,7 @@ export default function Dashboard() {
           </div>
 
           {/* Tips & Earnings */}
-          <div className="bg-gradient-to-br from-amber-50 to-white p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-amber-100">
+          <div className="bg-linear-to-br from-amber-50 to-white p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-amber-100">
             <div className="flex justify-between items-center mb-5">
               <h3 className="font-medium text-indigo-900 flex items-center gap-2">
                 <PiggyBank className="text-amber-500 w-5 h-5 fill-current" />
@@ -154,7 +182,7 @@ export default function Dashboard() {
         {/* Right Column: Wall of Fame */}
         <div className="lg:col-span-8">
           <div className="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100 h-full flex flex-col overflow-hidden">
-            <div className="p-6 border-b border-slate-50 flex justify-between items-center bg-gradient-to-r from-white to-slate-50/30">
+            <div className="p-6 border-b border-slate-50 flex justify-between items-center bg-linear-to-r from-white to-slate-50/30">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center">
                   <PartyPopper className="text-secondary w-5 h-5 fill-current" />
@@ -176,7 +204,7 @@ export default function Dashboard() {
               {/* Feed Item 1 */}
               <div className="group relative bg-white transition-all duration-300">
                 <div className="flex gap-4">
-                  <div className="relative flex-shrink-0">
+                    <div className="relative shrink-0">
                     <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-secondary shadow-[0_0_0_2px_white,0_0_0_4px_#0262ff] rotate-3 group-hover:rotate-0 transition-transform">
                       <img alt="Sarah Jenkins" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3AEqFg2gY-D-mjY7pmozOVUZU4sqpWbPcyv7iUuQB7LDxqks8LaZRdN7-ZBuOVy_4R94iF3_GG6y6ckJxqyIEF7pDKIaSec9St4aaxEMOOURjUDAmvk5V9IcIpgSvE70SgqbDWvgiTmIPTd1eFLRiXL9W9BfAhBX1xVsJKjql_mUJUdOvdcuJBDuh-EuGcPLJYnom5_ybSIIx-xySRWG4bJwAHe1g8bYBG_nvB2vNrniZ3Z0HvinmNGL00pd-zWLrts-S4r314gA" />
                     </div>
@@ -197,7 +225,7 @@ export default function Dashboard() {
                         <Coins className="w-3 h-3 fill-current" />
                       </div>
                     </div>
-                    <div className="mt-3 bg-gradient-to-br from-white to-blue-50 p-5 rounded-2xl border border-blue-50 italic text-indigo-900/80 text-base relative shadow-sm">
+                    <div className="mt-3 bg-linear-to-br from-white to-blue-50 p-5 rounded-2xl border border-blue-50 italic text-indigo-900/80 text-base relative shadow-sm">
                       "Michael went above and beyond to help a client during the server migration. His calm demeanor and technical expertise saved the day! Truly an inspiration to the team."
                       <Quote className="absolute -top-3 -left-2 text-indigo-200 w-8 h-8 opacity-50 fill-current" />
                     </div>
@@ -216,7 +244,7 @@ export default function Dashboard() {
               {/* Feed Item 2 */}
               <div className="group relative bg-white transition-all duration-300">
                 <div className="flex gap-4">
-                  <div className="relative flex-shrink-0">
+                  <div className="relative shrink-0">
                     <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-slate-100 -rotate-2 group-hover:rotate-0 transition-transform">
                       <img alt="David Miller" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR3fVPjaysof3dsmbln8E_ftFzFglZi56IoiOeVQbgAbJbN1vAvuLTY-tXbV8x_XS7G9xSYrK7R2DYDm9vDscQGJztgnY10-ZAH7DtQu2PHMOWGPEwOiiGVmkwM49SP3JIDBaE54bIS9OxBOZ4cC7JjYR_Og5aGfuLQdB_YA8wtN8yo1PnXqRB8RJsv_Qmcr6-khgFqWYUy5R8av9xjCG5YHKMtRoGIJb9BzH8Z-KXbBb39Vq58SNLbBHa-UO6c_KBoH6-w7CTZrw" />
                     </div>
@@ -256,7 +284,7 @@ export default function Dashboard() {
               {/* Feed Item 3 */}
               <div className="group relative bg-white transition-all duration-300">
                 <div className="flex gap-4">
-                  <div className="relative flex-shrink-0">
+                  <div className="relative shrink-0">
                     <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-slate-100">
                       <img alt="Jessica Wong" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Cknyy34cxw0rObjCTqZBJVZvqcINJ5CdcE4bPAuKhOa6i8LJyqTyh7SneWnYDgDeJ1xrc8-PXxGhMx1kZqYs0zqNnw3ATXicr74lpTK5OO-KgVZuJMnC4vifrqkxvtRAuQZifwpp1HX8AaAgUP9LBt72eA1iGtB-1HkXkprGxRy95kF9RtoWhlRtGh5tKY63djz-mtBflR4nPUx9FKS8kjLB8NYRrooD8EWpYB6B6MOrrCOFU52cpIOT3s20PP0h8769zLshnuw" />
                     </div>
