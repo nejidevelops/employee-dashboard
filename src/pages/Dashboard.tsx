@@ -436,7 +436,7 @@ export default function Dashboard() {
 
         {/* Right Column: Wall of Fame */}
         <div className="lg:col-span-8">
-          <div className="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100 h-full flex flex-col overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100 flex flex-col overflow-hidden">
             <div className="p-6 border-b border-slate-50 bg-linear-to-r from-white to-slate-50/30 space-y-5">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
@@ -652,16 +652,18 @@ export default function Dashboard() {
               ) : null}
             </div>
 
-            <div className="p-6 bg-slate-50/50 border-t border-slate-50 text-center">
-              <button
-                className="text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors flex items-center justify-center gap-2 mx-auto"
-                onClick={() => setShowAllRecognitions((current) => !current)}
-                type="button"
-              >
-                <ChevronDown className={`w-4 h-4 transition-transform ${showAllRecognitions ? 'rotate-180' : ''}`} />
-                {showAllRecognitions ? 'Show fewer recognitions' : 'See more recognitions'}
-              </button>
-            </div>
+            {visibleWallItems.length > displayedWallItems.length ? (
+              <div className="p-6 bg-slate-50/50 border-t border-slate-50 text-center">
+                <button
+                  className="text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors flex items-center justify-center gap-2 mx-auto"
+                  onClick={() => setShowAllRecognitions((current) => !current)}
+                  type="button"
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform ${showAllRecognitions ? 'rotate-180' : ''}`} />
+                  {showAllRecognitions ? 'Show fewer recognitions' : 'See more recognitions'}
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
