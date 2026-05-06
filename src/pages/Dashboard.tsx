@@ -355,6 +355,26 @@ export default function Dashboard() {
     }));
   };
 
+  const handleExportEarnings = () => {
+    const headers = ['Type', 'Description', 'Amount', 'Date', 'Time'];
+    const rows = earningHistory.map((e) => [e.type, e.description, e.amount.toFixed(2), e.date, e.time]);
+    const csv = [headers, ...rows]
+      .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+      .join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const now = new Date();
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    a.download = `earnings_${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
+
   const renderBadge = (kind: WallBadge) => {
     if (kind === 'award') {
       return <Award className="w-3 h-3 fill-current" />;
@@ -823,6 +843,7 @@ export default function Dashboard() {
                 Close
               </button>
               <button
+                onClick={handleExportEarnings}
                 className="flex-1 py-2.5 px-4 bg-amber-500 rounded-lg font-medium text-white hover:bg-amber-600 transition-colors flex items-center justify-center gap-2"
                 type="button"
               >
