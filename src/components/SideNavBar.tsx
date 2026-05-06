@@ -5,8 +5,8 @@ export default function SideNavBar() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) => 
     `flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 ${
       isActive 
-        ? 'text-indigo-700 bg-indigo-50/80 font-bold' 
-        : 'text-slate-600 hover:text-indigo-600 hover:bg-slate-50 font-semibold'
+        ? 'text-indigo-700 bg-indigo-50/80 font-medium' 
+        : 'text-slate-600 hover:text-indigo-600 hover:bg-slate-50 font-normal'
     }`;
 
   return (
@@ -35,7 +35,7 @@ export default function SideNavBar() {
       </nav>
       
       <div className="px-6 mt-4">
-        <button className="w-full bg-primary text-white font-bold py-3.5 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-all">
+        <button className="w-full bg-primary text-white font-medium py-3.5 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-all">
           <Star className="w-4 h-4 fill-current" />
           Give Praise
         </button>

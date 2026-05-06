@@ -8,26 +8,26 @@ export default function Activity() {
         {/* Left Sidebar Filters (Desktop) */}
         <div className="hidden xl:block col-span-3 space-y-6">
           <div className="bg-white p-6 rounded-xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] sticky top-24 border border-slate-100">
-            <h3 className="text-xl font-bold text-on-background mb-4">Filters</h3>
+            <h3 className="text-xl font-medium text-on-background mb-4">Filters</h3>
             <div className="space-y-2">
-              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg bg-indigo-50 text-primary font-semibold text-sm">
+              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg bg-indigo-50 text-primary font-normal text-sm">
                 <span className="flex items-center gap-2">
                   <List className="w-5 h-5" /> All Activity
                 </span>
                 <span className="bg-indigo-100 px-2 py-0.5 rounded text-[10px]">24</span>
               </button>
-              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-semibold text-sm transition-colors">
+              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-normal text-sm transition-colors">
                 <span className="flex items-center gap-2">
                   <Banknote className="w-5 h-5" /> Tips & Wins
                 </span>
                 <span className="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-[10px]">New</span>
               </button>
-              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-semibold text-sm transition-colors">
+              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-normal text-sm transition-colors">
                 <span className="flex items-center gap-2">
                   <Star className="w-5 h-5" /> Recognitions
                 </span>
               </button>
-              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-semibold text-sm transition-colors">
+              <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 font-normal text-sm transition-colors">
                 <span className="flex items-center gap-2">
                   <Cake className="w-5 h-5" /> Anniversaries
                 </span>
@@ -41,8 +41,8 @@ export default function Activity() {
           
           {/* Mobile Tabs */}
           <div className="xl:hidden flex bg-white p-1 rounded-xl shadow-sm border border-slate-100 mb-6">
-            <button className="flex-1 py-2 text-sm font-bold bg-indigo-50 text-primary rounded-lg">All Activity</button>
-            <button className="flex-1 py-2 text-sm font-semibold text-slate-500">Tips & Wins</button>
+            <button className="flex-1 py-2 text-sm font-medium bg-indigo-50 text-primary rounded-lg">All Activity</button>
+            <button className="flex-1 py-2 text-sm font-normal text-slate-500">Tips & Wins</button>
           </div>
 
           {/* Feed Grouped by Time */}
@@ -72,7 +72,7 @@ export default function Activity() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm text-slate-500">You received a <span className="font-bold text-yellow-600">Gold Star Tip</span> from <span className="font-bold text-on-background">Elena Rodriguez</span></p>
+                      <p className="text-sm text-slate-500">You received a <span className="font-medium text-yellow-600">Gold Star Tip</span> from <span className="font-medium text-on-background">Elena Rodriguez</span></p>
                       <p className="text-xs text-slate-400 mt-0.5">30 mins ago • Operations Excellence</p>
                     </div>
                   </div>
@@ -86,11 +86,11 @@ export default function Activity() {
                     <div className="mt-6 flex items-center gap-6">
                       <button className="flex items-center gap-2 px-4 py-2 bg-yellow-100/50 hover:bg-yellow-100 rounded-full transition-colors group">
                         <Heart className="w-5 h-5 text-yellow-600 fill-current" />
-                        <span className="text-sm font-bold text-yellow-700">Appreciate Back</span>
+                        <span className="text-sm font-medium text-yellow-700">Appreciate Back</span>
                       </button>
                       <button className="flex items-center gap-2 group">
                         <MessageCircle className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
-                        <span className="text-sm font-semibold text-slate-500">Reply</span>
+                        <span className="text-sm font-normal text-slate-500">Reply</span>
                       </button>
                     </div>
                   </div>
@@ -108,7 +108,7 @@ export default function Activity() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm text-slate-500"><span className="font-bold text-on-background">Sarah Chen</span> recognized <span className="font-bold text-on-background">Marcus Thorne</span></p>
+                      <p className="text-sm text-slate-500"><span className="font-medium text-on-background">Sarah Chen</span> recognized <span className="font-medium text-on-background">Marcus Thorne</span></p>
                       <p className="text-xs text-slate-400 mt-0.5">2 hours ago • Product Design</p>
                     </div>
                     <button className="text-slate-300 hover:text-slate-500 transition-colors">
@@ -122,17 +122,17 @@ export default function Activity() {
                         "Marcus did an incredible job leading the Q3 design sprint. His attention to user edge cases and collaborative spirit made all the difference! 🚀"
                       </p>
                       <div className="mt-4 flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-white rounded-full text-[11px] font-bold text-secondary uppercase tracking-wider shadow-sm border border-slate-100">#TeamPlayer</span>
+                        <span className="px-3 py-1 bg-white rounded-full text-[11px] font-medium text-secondary uppercase tracking-wider shadow-sm border border-slate-100">#TeamPlayer</span>
                       </div>
                     </div>
                     <div className="mt-6 flex items-center gap-6">
                       <button className="flex items-center gap-2 group">
                         <Heart className="w-5 h-5 text-slate-400 group-hover:text-red-500 transition-colors" />
-                        <span className="text-sm font-semibold text-slate-500 group-hover:text-on-background">12</span>
+                        <span className="text-sm font-normal text-slate-500 group-hover:text-on-background">12</span>
                       </button>
                       <button className="flex items-center gap-2 group">
                         <MessageCircle className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
-                        <span className="text-sm font-semibold text-slate-500 group-hover:text-on-background">4</span>
+                        <span className="text-sm font-normal text-slate-500 group-hover:text-on-background">4</span>
                       </button>
                       <button className="flex items-center gap-2 group ml-auto">
                         <Share2 className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
@@ -161,8 +161,8 @@ export default function Activity() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-lg text-on-background">Happy 3rd Anniversary!</h4>
-                      <p className="text-sm text-slate-500">Congratulations to <span className="text-primary font-bold">David Miller</span> on 3 years.</p>
+                      <h4 className="font-medium text-lg text-on-background">Happy 3rd Anniversary!</h4>
+                      <p className="text-sm text-slate-500">Congratulations to <span className="text-primary font-medium">David Miller</span> on 3 years.</p>
                     </div>
                     <div className="text-center px-4 py-2 bg-white rounded-xl shadow-sm border border-slate-100">
                       <span className="block text-xl font-black text-secondary">3</span>
@@ -172,10 +172,10 @@ export default function Activity() {
                   <div className="mt-6 flex items-center gap-3">
                     <div className="flex -space-x-2">
                       <img alt="Avatar" className="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB40VQE1QxDN7krDowWRo1V4GLkkyhooC8qLMhrL8UVscVqgGn1DrnSyrKC-c6R4MoJvDMoca1KgL-v14Zm6ZG910ur1CDyLTSLyKio4f3hlKn0j2fU20MsF0lw8Ce74NCyM95hV5TQpSTmAJPeuaKS4F2DKZ35kHa6bd4j97exZeYKIaZXnJ1ZCkXU4o25qm2z7I78cFPZH42ZQuj-Z9FFbJq-9usiUlHrgXCQO9ATz1beIaltj2Q8_458A1Ux9pXpsBwi2cd04v4"/>
-                      <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[8px] font-bold">+8</div>
+                      <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[8px] font-medium">+8</div>
                     </div>
-                    <p className="text-xs font-semibold text-slate-400">sent wishes</p>
-                    <button className="ml-auto py-2 px-4 bg-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg hover:bg-slate-50 transition-colors shadow-sm">Congratulate</button>
+                    <p className="text-xs font-normal text-slate-400">sent wishes</p>
+                    <button className="ml-auto py-2 px-4 bg-white border border-slate-200 text-slate-700 text-xs font-medium rounded-lg hover:bg-slate-50 transition-colors shadow-sm">Congratulate</button>
                   </div>
                 </article>
 
@@ -188,7 +188,7 @@ export default function Activity() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm text-slate-500"><span className="font-bold text-on-background">Elena Rodriguez</span> recognized <span className="font-bold text-on-background">Design Team</span></p>
+                      <p className="text-sm text-slate-500"><span className="font-medium text-on-background">Elena Rodriguez</span> recognized <span className="font-medium text-on-background">Design Team</span></p>
                       <p className="text-xs text-slate-400 mt-0.5">18 hours ago • Ops</p>
                     </div>
                   </div>
@@ -208,11 +208,11 @@ export default function Activity() {
                     <div className="mt-6 flex items-center gap-6">
                       <button className="flex items-center gap-2 group">
                         <Heart className="w-5 h-5 text-slate-400 group-hover:text-red-500 transition-colors" />
-                        <span className="text-sm font-semibold text-slate-500 group-hover:text-on-background">34</span>
+                        <span className="text-sm font-normal text-slate-500 group-hover:text-on-background">34</span>
                       </button>
                       <button className="flex items-center gap-2 group">
                         <MessageCircle className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
-                        <span className="text-sm font-semibold text-slate-500 group-hover:text-on-background">8</span>
+                        <span className="text-sm font-normal text-slate-500 group-hover:text-on-background">8</span>
                       </button>
                     </div>
                   </div>
@@ -229,7 +229,7 @@ export default function Activity() {
           
           {/* Personal Performance */}
           <div className="bg-gradient-to-br from-primary to-indigo-900 p-6 rounded-xl shadow-lg text-white mb-6">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 text-sm">
+            <h3 className="text-xl font-medium text-white mb-4 flex items-center gap-2 text-sm">
               <Medal className="w-5 h-5 text-yellow-400" />
               Personal Wins
             </h3>
@@ -240,7 +240,7 @@ export default function Activity() {
             <div className="space-y-3">
               <div className="flex justify-between text-xs">
                 <span className="text-indigo-200">Monthly Goal</span>
-                <span className="font-bold">80%</span>
+                <span className="font-medium">80%</span>
               </div>
               <div className="h-1.5 bg-indigo-800/50 rounded-full overflow-hidden">
                 <div className="h-full bg-yellow-400 w-[80%]"></div>
@@ -250,14 +250,14 @@ export default function Activity() {
 
           {/* Trending Section */}
           <div className="bg-white p-6 rounded-xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] border border-slate-100">
-            <h3 className="text-xl font-bold text-on-background mb-6 flex items-center gap-2">
+            <h3 className="text-xl font-medium text-on-background mb-6 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-secondary" />
               Activity Trends
             </h3>
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Recognitions</span>
+                  <span className="text-xs font-medium text-slate-400 uppercase tracking-widest">Recognitions</span>
                   <span className="text-sm font-black text-primary">+12%</span>
                 </div>
                 <div className="h-2 bg-indigo-50 rounded-full overflow-hidden">
@@ -269,20 +269,20 @@ export default function Activity() {
 
           {/* Upcoming Events */}
           <div className="bg-white p-6 rounded-xl shadow-[0_8px_30px_rgb(21,25,108,0.05)] border border-slate-100">
-            <h3 className="text-xl font-bold text-on-background mb-4">Upcoming Events</h3>
+            <h3 className="text-xl font-medium text-on-background mb-4">Upcoming Events</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full overflow-hidden bg-slate-100 flex-shrink-0">
                   <img alt="James" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8ViWu7hTZFAOlC9GZZQTwk8ADnTBGL1AfsHUmV4PxUgCczZ5kUBxWHZFJiOV4LRgK4qMpCq44QXrMkt-xVdF9u7ZYLuQSn_fJzZdNbuZgTP2JlxEnulpkV1pt3eYYq7_WL3ex1_xOyoX4ntouq0MzKSYdiK1hh_BVjPTNzYA5FjLpjDIMRYQaOegnoYoR9rLf9ftCQk8DSs-AdfyO5UbhGtx_-oV0jWh7c8XTNlM3Dblc3qd-NObaL4go4Gn7lLTKy9_kPtYxvtQ"/>
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-bold text-on-background leading-tight">James Wilson</p>
+                  <p className="text-sm font-medium text-on-background leading-tight">James Wilson</p>
                   <p className="text-[11px] text-slate-400">Birthday • Tomorrow</p>
                 </div>
                 <Cake className="w-4 h-4 text-secondary" />
               </div>
             </div>
-            <button className="w-full mt-6 py-2 text-xs font-bold text-primary hover:text-secondary transition-colors border-t border-slate-50 pt-4">View All Events</button>
+            <button className="w-full mt-6 py-2 text-xs font-medium text-primary hover:text-secondary transition-colors border-t border-slate-50 pt-4">View All Events</button>
           </div>
 
         </div>

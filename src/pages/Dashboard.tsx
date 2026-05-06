@@ -6,11 +6,11 @@ export default function Dashboard() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
         <div>
-          <h1 className="text-4xl font-bold text-on-background tracking-tight">Good morning, Alex! 👋</h1>
+          <h1 className="text-4xl font-medium text-on-background tracking-tight">Good morning, Alex! 👋</h1>
           <p className="text-on-surface-variant text-base mt-1">Ready for another day of making an impact?</p>
         </div>
         <div className="flex gap-3">
-          <button className="bg-secondary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 active:scale-95">
+          <button className="bg-secondary text-white px-6 py-3 rounded-xl font-medium flex items-center gap-2 hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 active:scale-95">
             <PartyPopper className="w-5 h-5 fill-current" />
             Give Zola
           </button>
@@ -25,22 +25,22 @@ export default function Dashboard() {
           {/* Today's Focus */}
           <div className="bg-white p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100">
             <div className="flex justify-between items-center mb-5">
-              <h3 className="font-bold text-indigo-900 flex items-center gap-2">
+              <h3 className="font-medium text-indigo-900 flex items-center gap-2">
                 <Zap className="text-amber-500 w-5 h-5 fill-current" />
                 Today's Focus
               </h3>
-              <span className="text-xs font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded">1/3 Done</span>
+              <span className="text-xs font-medium text-slate-400 bg-slate-50 px-2 py-1 rounded">1/3 Done</span>
             </div>
             <ul className="space-y-3">
               <li className="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-100 hover:border-blue-400 transition-colors cursor-pointer group">
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full border-2 border-slate-200"></div>
                   <div className="flex flex-col">
-                    <span className="text-sm font-bold text-on-background">Secure a 5-star Google Review</span>
+                    <span className="text-sm font-medium text-on-background">Secure a 5-star Google Review</span>
                     <span className="text-[10px] text-slate-400">Goal: 1 review</span>
                   </div>
                 </div>
-                <span className="text-[10px] font-bold text-slate-400">0/1</span>
+                <span className="text-[10px] font-medium text-slate-400">0/1</span>
               </li>
               <li className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 border border-transparent hover:border-slate-200 transition-colors cursor-pointer group">
                 <div className="w-6 h-6 rounded-full border-2 border-teal-500 bg-teal-500/10 flex items-center justify-center">
@@ -48,13 +48,13 @@ export default function Dashboard() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-sm font-medium text-slate-500 line-through">Maintain NPS score above 75 today</span>
-                  <span className="text-[10px] text-teal-500 font-bold">Current: 86 NPS</span>
+                  <span className="text-[10px] text-teal-500 font-medium">Current: 86 NPS</span>
                 </div>
               </li>
               <li className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-100 hover:border-secondary/30 transition-colors cursor-pointer">
                 <div className="w-6 h-6 rounded-full border-2 border-slate-200"></div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-bold text-on-background">Complete 100% seat belt usage</span>
+                  <span className="text-sm font-medium text-on-background">Complete 100% seat belt usage</span>
                   <span className="text-[10px] text-slate-400">Safety compliance goal</span>
                 </div>
               </li>
@@ -65,17 +65,17 @@ export default function Dashboard() {
           <div className="bg-white p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100 relative overflow-hidden">
             <div className="relative z-10">
               <div className="flex justify-between items-center mb-6">
-                <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Your Wins</span>
+                <span className="text-xs font-medium text-on-surface-variant uppercase tracking-widest">Your Wins</span>
                 <Sparkles className="text-amber-500 w-5 h-5 fill-current" />
               </div>
               <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-3xl font-bold text-primary">12,450</span>
-                <span className="text-teal-500 font-bold text-sm">Points available</span>
+                <span className="text-3xl font-medium text-primary">12,450</span>
+                <span className="text-teal-500 font-medium text-sm">Points available</span>
               </div>
               <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mt-4">
                 <div className="bg-gradient-to-r from-primary to-secondary h-full rounded-full w-[75%]"></div>
               </div>
-              <p className="text-[11px] text-on-surface-variant mt-3 font-semibold flex items-center gap-1">
+              <p className="text-[11px] text-on-surface-variant mt-3 font-normal flex items-center gap-1">
                 <Info className="w-3 h-3" />
                 Only 550 points until your "Executive Badge" upgrade!
               </p>
@@ -85,11 +85,11 @@ export default function Dashboard() {
           {/* Tips & Earnings */}
           <div className="bg-gradient-to-br from-amber-50 to-white p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-amber-100">
             <div className="flex justify-between items-center mb-5">
-              <h3 className="font-bold text-indigo-900 flex items-center gap-2">
+              <h3 className="font-medium text-indigo-900 flex items-center gap-2">
                 <PiggyBank className="text-amber-500 w-5 h-5 fill-current" />
                 Tips & Micro-bonuses
               </h3>
-              <span className="text-[10px] bg-white px-2 py-1 rounded-full font-bold text-amber-500 border border-amber-100 shadow-sm">NEW</span>
+              <span className="text-[10px] bg-white px-2 py-1 rounded-full font-medium text-amber-500 border border-amber-100 shadow-sm">NEW</span>
             </div>
             <div className="space-y-4">
               <div className="flex items-center justify-between p-3 bg-white/60 rounded-xl">
@@ -98,11 +98,11 @@ export default function Dashboard() {
                     <ShoppingBag className="text-teal-500 w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-indigo-900">Customer Gratitude</p>
+                    <p className="text-xs font-medium text-indigo-900">Customer Gratitude</p>
                     <p className="text-[10px] text-slate-500">Quick help with order #124</p>
                   </div>
                 </div>
-                <span className="font-bold text-teal-500">+$15.00</span>
+                <span className="font-medium text-teal-500">+$15.00</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-white/60 rounded-xl">
                 <div className="flex items-center gap-3">
@@ -110,42 +110,42 @@ export default function Dashboard() {
                     <Coffee className="text-amber-500 w-4 h-4 fill-current" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-indigo-900">Sarah J. sent a coffee</p>
+                    <p className="text-xs font-medium text-indigo-900">Sarah J. sent a coffee</p>
                     <p className="text-[10px] text-slate-500">For the great presentation</p>
                   </div>
                 </div>
-                <span className="font-bold text-amber-500">+$5.00</span>
+                <span className="font-medium text-amber-500">+$5.00</span>
               </div>
             </div>
-            <button className="w-full mt-4 py-2.5 text-xs font-bold text-indigo-900 hover:bg-amber-100/50 rounded-lg transition-colors border border-dashed border-amber-200">
+            <button className="w-full mt-4 py-2.5 text-xs font-medium text-indigo-900 hover:bg-amber-100/50 rounded-lg transition-colors border border-dashed border-amber-200">
               View Earning History
             </button>
           </div>
 
           {/* Achievements */}
           <div className="bg-white p-6 rounded-xl shadow-[0_10px_40px_-10px_rgba(21,25,108,0.08)] border border-slate-100">
-            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest block mb-4">Milestone Badges</span>
+            <span className="text-xs font-medium text-on-surface-variant uppercase tracking-widest block mb-4">Milestone Badges</span>
             <div className="flex justify-around">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary shadow-[0_0_0_2px_white,0_0_0_4px_#0262ff]">
                   <Award className="w-8 h-8 fill-current" />
                 </div>
-                <span className="text-[10px] font-bold text-center">Innovator</span>
+                <span className="text-[10px] font-medium text-center">Innovator</span>
               </div>
               <div className="flex flex-col items-center gap-2 opacity-50">
                 <div className="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
                   <Handshake className="w-8 h-8 fill-current" />
                 </div>
-                <span className="text-[10px] font-bold text-center">Team Hero</span>
+                <span className="text-[10px] font-medium text-center">Team Hero</span>
               </div>
               <div className="flex flex-col items-center gap-2 opacity-50">
                 <div className="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
                   <Gauge className="w-8 h-8 fill-current" />
                 </div>
-                <span className="text-[10px] font-bold text-center">Velocity</span>
+                <span className="text-[10px] font-medium text-center">Velocity</span>
               </div>
             </div>
-            <button className="w-full mt-6 py-2.5 bg-slate-50 text-indigo-700 font-bold text-sm rounded-xl hover:bg-indigo-100 transition-colors">
+            <button className="w-full mt-6 py-2.5 bg-slate-50 text-indigo-700 font-medium text-sm rounded-xl hover:bg-indigo-100 transition-colors">
               View Trophy Room
             </button>
           </div>
@@ -160,13 +160,13 @@ export default function Dashboard() {
                   <PartyPopper className="text-secondary w-5 h-5 fill-current" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-semibold text-indigo-900">Wall of Fame</h2>
-                  <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wide">Celebrate our community</p>
+                  <h2 className="text-2xl font-normal text-indigo-900">Wall of Fame</h2>
+                  <p className="text-[11px] text-slate-400 font-medium uppercase tracking-wide">Celebrate our community</p>
                 </div>
               </div>
               <div className="flex gap-2 p-1 bg-slate-100 rounded-full">
-                <button className="px-4 py-1.5 text-xs font-bold rounded-full transition-all text-slate-500 hover:text-indigo-900">Everyone</button>
-                <button className="px-4 py-1.5 text-xs font-bold bg-white text-indigo-900 rounded-full shadow-sm">My Circle</button>
+                <button className="px-4 py-1.5 text-xs font-medium rounded-full transition-all text-slate-500 hover:text-indigo-900">Everyone</button>
+                <button className="px-4 py-1.5 text-xs font-medium bg-white text-indigo-900 rounded-full shadow-sm">My Circle</button>
               </div>
             </div>
             
@@ -187,9 +187,9 @@ export default function Dashboard() {
                   <div className="flex-1">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <p className="text-sm font-bold text-indigo-900">Sarah Jenkins <span className="text-slate-400 font-normal">celebrated</span> Michael Chen</p>
+                        <p className="text-sm font-medium text-indigo-900">Sarah Jenkins <span className="text-slate-400 font-normal">celebrated</span> Michael Chen</p>
                         <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> 2 hours ago • <span className="text-secondary font-bold">#CustomerObsession</span>
+                          <Clock className="w-3 h-3" /> 2 hours ago • <span className="text-secondary font-medium">#CustomerObsession</span>
                         </p>
                       </div>
                       <div className="flex items-center gap-1 text-teal-500 bg-teal-50 px-2 py-1 rounded-lg border border-teal-100">
@@ -202,10 +202,10 @@ export default function Dashboard() {
                       <Quote className="absolute -top-3 -left-2 text-indigo-200 w-8 h-8 opacity-50 fill-current" />
                     </div>
                     <div className="mt-4 flex items-center gap-6">
-                      <button className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all hover:scale-105">
+                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105">
                         <Heart className="w-5 h-5 fill-current" /> 12 Claps
                       </button>
-                      <button className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all hover:scale-105">
+                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all hover:scale-105">
                         <MessageCircle className="w-5 h-5" /> 3 Comments
                       </button>
                     </div>
@@ -227,9 +227,9 @@ export default function Dashboard() {
                   <div className="flex-1">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <p className="text-sm font-bold text-indigo-900">David Miller <span className="text-slate-400 font-normal">shouted out</span> The UX Team</p>
+                        <p className="text-sm font-medium text-indigo-900">David Miller <span className="text-slate-400 font-normal">shouted out</span> The UX Team</p>
                         <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> 5 hours ago • <span className="text-secondary font-bold">#Innovation</span>
+                          <Clock className="w-3 h-3" /> 5 hours ago • <span className="text-secondary font-medium">#Innovation</span>
                         </p>
                       </div>
                       <div className="flex items-center gap-1 text-teal-500 bg-teal-50 px-2 py-1 rounded-lg border border-teal-100">
@@ -242,10 +242,10 @@ export default function Dashboard() {
                       <Quote className="absolute -top-3 -left-2 text-slate-200 w-8 h-8 fill-current" />
                     </div>
                     <div className="mt-4 flex items-center gap-6">
-                      <button className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
                         <Heart className="w-5 h-5" /> 28 Claps
                       </button>
-                      <button className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
                         <MessageCircle className="w-5 h-5" /> 8 Comments
                       </button>
                     </div>
@@ -264,9 +264,9 @@ export default function Dashboard() {
                   <div className="flex-1">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <p className="text-sm font-bold text-indigo-900">Jessica Wong <span className="text-slate-400 font-normal">gave a high-five to</span> Liam O'Reilly</p>
+                        <p className="text-sm font-medium text-indigo-900">Jessica Wong <span className="text-slate-400 font-normal">gave a high-five to</span> Liam O'Reilly</p>
                         <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> Yesterday • <span className="text-secondary font-bold">#TeamSpirit</span>
+                          <Clock className="w-3 h-3" /> Yesterday • <span className="text-secondary font-medium">#TeamSpirit</span>
                         </p>
                       </div>
                     </div>
@@ -274,14 +274,14 @@ export default function Dashboard() {
                     <div className="mt-4 rounded-2xl overflow-hidden h-48 w-full relative group shadow-sm border border-slate-100">
                       <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtp9ugrAHEsIT9X7h4TxBJS3Vv2M3jMGsB-zODr81l2AC4TDKWJCg18ruEeY0JAi708vVAVFR2KSAnb_bG08cby1ENpjhdoBP9Ee3wRveq_NrgsqOX7hPTQ21LJfHZYB8cddkN0bYSh1ss89B93iyZg69g4Zg8dTaEB3Xf2RdcPAnYckhh85LDFRgPL1QV24Ds9u9ts1K1nAjkQ6AJRFJUeyPp2ETJgSR_QgHHmDyjwsRomHK3WZ2IJsSdcYk4EbpWyG_Zq4J12HA" />
                       <div className="absolute inset-0 bg-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-                        <span className="bg-white text-indigo-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg">View Album</span>
+                        <span className="bg-white text-indigo-900 px-4 py-2 rounded-full font-medium text-sm shadow-lg">View Album</span>
                       </div>
                     </div>
                     <div className="mt-4 flex items-center gap-6">
-                      <button className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
                         <Heart className="w-5 h-5" /> 45 Claps
                       </button>
-                      <button className="flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-secondary transition-all">
+                      <button className="flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-secondary transition-all">
                         <MessageCircle className="w-5 h-5" /> 15 Comments
                       </button>
                     </div>
@@ -293,7 +293,7 @@ export default function Dashboard() {
             
             {/* Load More */}
             <div className="p-6 bg-slate-50/50 border-t border-slate-50 text-center">
-              <button className="text-sm font-bold text-indigo-700 hover:text-indigo-900 transition-colors flex items-center justify-center gap-2 mx-auto">
+              <button className="text-sm font-medium text-indigo-700 hover:text-indigo-900 transition-colors flex items-center justify-center gap-2 mx-auto">
                 <ChevronDown className="w-4 h-4" />
                 See more recognitions
               </button>

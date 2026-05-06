@@ -4,7 +4,7 @@ import { Home, Zap, Star, Trophy, User } from 'lucide-react';
 export default function MobileNav() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) => 
     `flex flex-col items-center gap-1 ${
-      isActive ? 'text-secondary font-bold' : 'text-slate-400'
+      isActive ? 'text-secondary font-medium' : 'text-slate-400'
     }`;
 
   return (

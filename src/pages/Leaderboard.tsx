@@ -7,14 +7,14 @@ export default function Leaderboard() {
       {/* Header & Filters */}
       <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h2 className="text-4xl font-bold text-primary mb-2">Company Leaderboard</h2>
+          <h2 className="text-4xl font-medium text-primary mb-2">Company Leaderboard</h2>
           <p className="text-on-surface-variant max-w-xl">Celebrate momentum and track achievements across the global organization.</p>
         </div>
         
         <div className="flex flex-wrap gap-3">
           <div className="flex flex-col gap-1">
-            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider ml-1">Department</label>
-            <select className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-semibold text-on-surface focus:ring-2 focus:ring-secondary transition-all focus:outline-none">
+            <label className="text-[10px] font-medium text-slate-400 uppercase tracking-wider ml-1">Department</label>
+            <select className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-normal text-on-surface focus:ring-2 focus:ring-secondary transition-all focus:outline-none">
               <option>All Departments</option>
               <option>Engineering</option>
               <option>Product</option>
@@ -23,16 +23,16 @@ export default function Leaderboard() {
             </select>
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider ml-1">Time Period</label>
-            <select className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-semibold text-on-surface focus:ring-2 focus:ring-secondary transition-all focus:outline-none" defaultValue="This Month">
+            <label className="text-[10px] font-medium text-slate-400 uppercase tracking-wider ml-1">Time Period</label>
+            <select className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-normal text-on-surface focus:ring-2 focus:ring-secondary transition-all focus:outline-none" defaultValue="This Month">
               <option>This Week</option>
               <option>This Month</option>
               <option>All-time</option>
             </select>
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider ml-1">Metric Type</label>
-            <select className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-semibold text-on-surface focus:ring-2 focus:ring-secondary transition-all focus:outline-none">
+            <label className="text-[10px] font-medium text-slate-400 uppercase tracking-wider ml-1">Metric Type</label>
+            <select className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-normal text-on-surface focus:ring-2 focus:ring-secondary transition-all focus:outline-none">
               <option>Zola Points</option>
               <option>Project Impact</option>
               <option>Peer Feedback</option>
@@ -43,15 +43,15 @@ export default function Leaderboard() {
 
       {/* Tabs */}
       <div className="flex border-b border-slate-200 mb-10 overflow-x-auto">
-        <button className="px-6 py-3 border-b-2 border-primary text-primary font-bold text-sm flex items-center gap-2 whitespace-nowrap">
+        <button className="px-6 py-3 border-b-2 border-primary text-primary font-medium text-sm flex items-center gap-2 whitespace-nowrap">
           <Star className="w-5 h-5 fill-current" />
           Reviews Leaderboard
         </button>
-        <button className="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary font-semibold text-sm flex items-center gap-2 transition-colors whitespace-nowrap">
+        <button className="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary font-normal text-sm flex items-center gap-2 transition-colors whitespace-nowrap">
           <Heart className="w-5 h-5" />
           NPS Leaderboard
         </button>
-        <button className="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary font-semibold text-sm flex items-center gap-2 transition-colors whitespace-nowrap">
+        <button className="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary font-normal text-sm flex items-center gap-2 transition-colors whitespace-nowrap">
           <Banknote className="w-5 h-5" />
           Tips Earned
         </button>
@@ -66,11 +66,11 @@ export default function Leaderboard() {
             <div className="w-20 h-20 rounded-full border-4 border-slate-300 p-1">
               <img alt="Jane Smith" className="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYXTbMjT5Bcgshp5AWoa6JNPzh0SHKSRvatF6vOBKlPc19MYe9eRopVwqi1xE7dycYgzK6brBHFxTwSZdgckw7gGS9vHhgMVGfGgNQ4rSIy2kIO6ChN5bb_3mm9OoHQrzw6CoowCFxXqf_v1UFz5ksPqK_To2Rl5SHOzTdWNDxOfbUuGHmdaSwWceuNFS4IVPPXYCtv1BR-esDx1qsbffDnzAOGkXQGrCq1JEuxhieK30ec4uWMnYjlkfESb3wO2nT6b-oU2hqf38"/>
             </div>
-            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-slate-300 rounded-full flex items-center justify-center text-white border-4 border-white font-bold text-xs">2</div>
+            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-slate-300 rounded-full flex items-center justify-center text-white border-4 border-white font-medium text-xs">2</div>
           </div>
-          <h3 className="text-xl font-bold text-primary">Jane Smith</h3>
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-tight mb-3">Product Design</p>
-          <div className="flex items-center gap-1 text-secondary font-bold text-xl">
+          <h3 className="text-xl font-medium text-primary">Jane Smith</h3>
+          <p className="text-xs font-normal text-slate-400 uppercase tracking-tight mb-3">Product Design</p>
+          <div className="flex items-center gap-1 text-secondary font-medium text-xl">
             <Star className="w-5 h-5 fill-current" />
             2,840
           </div>
@@ -87,8 +87,8 @@ export default function Leaderboard() {
             </div>
             <div className="absolute -bottom-3 -right-3 w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white border-4 border-white font-black text-sm">1</div>
           </div>
-          <h3 className="text-3xl font-bold text-primary">Marcus Chen</h3>
-          <p className="text-sm font-semibold text-slate-400 uppercase tracking-tight mb-4">Engineering Architecture</p>
+          <h3 className="text-3xl font-medium text-primary">Marcus Chen</h3>
+          <p className="text-sm font-normal text-slate-400 uppercase tracking-tight mb-4">Engineering Architecture</p>
           <div className="flex items-center gap-2 text-indigo-700 font-black text-3xl">
             <Star className="w-6 h-6 fill-current" />
             3,125
@@ -101,11 +101,11 @@ export default function Leaderboard() {
             <div className="w-20 h-20 rounded-full border-4 border-amber-600 p-1 opacity-90">
               <img alt="Amara Okafor" className="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzahjB6fvNfzR2QIfRQnYUNCzLX8ud-3z8dkIlEcBoWfNm31qGC6yuq6P_46Bkg9BSsjhLkhRDOA_g-NMxyExvGVpIBoIzQ9399qvMmykCVMBXe3m-XZAAB0SaZ9vbnqh8xrUlV-kWUkMaUA9EIlT0v6fNc4zy0rwmcAQmo0geyzoOrdouyyqC8N3KNEy6420jbNHQc80NMI9FAMx8oFPV5Z8-v8IE5cNfEwtBxK1KZSLd-iB4m22Ns4ptY5fEf0cjoVqQmSno9vo"/>
             </div>
-            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center text-white border-4 border-white font-bold text-xs">3</div>
+            <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center text-white border-4 border-white font-medium text-xs">3</div>
           </div>
-          <h3 className="text-xl font-bold text-primary">Amara Okafor</h3>
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-tight mb-3">Customer Success</p>
-          <div className="flex items-center gap-1 text-secondary font-bold text-xl">
+          <h3 className="text-xl font-medium text-primary">Amara Okafor</h3>
+          <p className="text-xs font-normal text-slate-400 uppercase tracking-tight mb-3">Customer Success</p>
+          <div className="flex items-center gap-1 text-secondary font-medium text-xl">
             <Star className="w-5 h-5 fill-current" />
             2,410
           </div>
@@ -124,19 +124,19 @@ export default function Leaderboard() {
             <img alt="Your Profile" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEpYMXllBQbEC2N6LCakzKYbBrPMteSJ0dGkxGzoMZ1T25-x8MlUtqHANOy7A8xgfjaatttvJE7zA7WKa92j0REGx001AWiQ19k4wMfwvifzWXpX0BpH-H0iydgD6TmlzcdmOsB65D4NHIZ7lKJUuw1XGd4mXnCl6CjNnDk_1i8yW9Tvxyx-7Yb_VJc4r5nzTSGkp4NDu6e-8YPXQAQDGriHYl8TQQ6Vag9kIbRridB0hhkqBIOZsI2vxMmi2pCvojcr4eCqSIjpQ"/>
           </div>
           <div>
-            <p className="text-xs font-bold text-indigo-200 tracking-widest mb-1">REVIEWS TO #10</p>
-            <h4 className="text-2xl font-bold leading-none">Ranked #14 <span className="text-sm text-indigo-200 font-normal ml-2">Top 5% of company</span></h4>
+            <p className="text-xs font-medium text-indigo-200 tracking-widest mb-1">REVIEWS TO #10</p>
+            <h4 className="text-2xl font-medium leading-none">Ranked #14 <span className="text-sm text-indigo-200 font-normal ml-2">Top 5% of company</span></h4>
           </div>
         </div>
         
         <div className="flex gap-6 relative z-10 w-full md:w-auto justify-between md:justify-end">
           <div className="text-right">
-            <p className="text-xs font-bold text-indigo-200 tracking-widest mb-1">REVIEWS TO #10</p>
+            <p className="text-xs font-medium text-indigo-200 tracking-widest mb-1">REVIEWS TO #10</p>
             <p className="text-2xl font-black">145 pts</p>
           </div>
           <div className="h-12 w-[1px] bg-white/20"></div>
           <div className="text-right pr-4">
-            <p className="text-xs font-bold text-indigo-200 tracking-widest mb-1">TREND</p>
+            <p className="text-xs font-medium text-indigo-200 tracking-widest mb-1">TREND</p>
             <p className="text-2xl font-black flex items-center gap-1 text-green-400">
               <TrendingUp className="w-6 h-6" />
               +2
@@ -149,10 +149,10 @@ export default function Leaderboard() {
       <div className="bg-white rounded-2xl shadow-[0_20px_30px_rgba(0,0,0,0.02)] border border-slate-100 overflow-hidden">
         
         <div className="grid grid-cols-12 gap-4 px-8 py-4 border-b border-slate-100 bg-slate-50/50">
-          <div className="col-span-1 text-xs font-bold tracking-widest text-slate-400">RANK</div>
-          <div className="col-span-6 text-xs font-bold tracking-widest text-slate-400">PERFORMER</div>
-          <div className="col-span-2 text-xs font-bold tracking-widest text-slate-400 text-right">REVIEWS</div>
-          <div className="col-span-3 text-xs font-bold tracking-widest text-slate-400 text-right">TREND</div>
+          <div className="col-span-1 text-xs font-medium tracking-widest text-slate-400">RANK</div>
+          <div className="col-span-6 text-xs font-medium tracking-widest text-slate-400">PERFORMER</div>
+          <div className="col-span-2 text-xs font-medium tracking-widest text-slate-400 text-right">REVIEWS</div>
+          <div className="col-span-3 text-xs font-medium tracking-widest text-slate-400 text-right">TREND</div>
         </div>
 
         {/* Item 4 */}
@@ -163,13 +163,13 @@ export default function Leaderboard() {
               <img alt="David Low" className="rounded-full w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD30YHGidHx-4K1e_T6zrT9rUwndDLK7aTt8Glx7-lRhahFt2mtvYoAeqx-Txs-be7pKy1PLwJ5swl7O47Q6gQD09da8gU06wh4yhRw5sMiVy2Ywzysx_bxtNDlkYTKJg7r3U8Ee13cLDhnNvep5BL93FWO15daFqkdk8OaRt1Lli0Ovkd3LMH9fvi4VqfOyj8TncRUbrSxVv__8kiin7SMhMNEWYc8iY7FrvQMibCbFFRFg_JVAumFnX6b3vFLfd5UXQIaHzXfgn0"/>
             </div>
             <div>
-              <h5 className="font-bold text-indigo-900">David Low</h5>
+              <h5 className="font-medium text-indigo-900">David Low</h5>
               <p className="text-xs text-slate-500">Global Sales</p>
             </div>
           </div>
-          <div className="col-span-2 text-right font-bold text-indigo-900">2,180</div>
+          <div className="col-span-2 text-right font-medium text-indigo-900">2,180</div>
           <div className="col-span-3 text-right flex justify-end">
-            <span className="flex items-center gap-1 text-green-500 font-semibold text-sm">
+            <span className="flex items-center gap-1 text-green-500 font-normal text-sm">
               <ChevronUp className="w-5 h-5" /> 1 spot
             </span>
           </div>
@@ -183,13 +183,13 @@ export default function Leaderboard() {
               <img alt="Elena Kuznetsova" className="rounded-full w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaffo_w9-3EfjASXs2lWjULbsU0PcjZ5j4iEFoSKO8VTcjk6xt3T1o3uRLUxkqznus5M4hoW5KLZzrCLE1qeJpAkF_7OmfM1rumihwECMar4eUn-QKUuTx2WkPjP6fCgjXTMqgieSUm3hbFWfaaBBLCf7DvgWXlkJ_3268VBmJu5GpXI1lOaYrV9XtCYlkkiSze5iwVpSD5LsZJcQIlQ4LpwtwP-2D3V92JDY3VhqHMTa627WUgcd3XK-nll16CGThEyv0ja99XzQ"/>
             </div>
             <div>
-              <h5 className="font-bold text-indigo-900">Elena Kuznetsova</h5>
+              <h5 className="font-medium text-indigo-900">Elena Kuznetsova</h5>
               <p className="text-xs text-slate-500">Engineering</p>
             </div>
           </div>
-          <div className="col-span-2 text-right font-bold text-indigo-900">2,050</div>
+          <div className="col-span-2 text-right font-medium text-indigo-900">2,050</div>
           <div className="col-span-3 text-right flex justify-end">
-            <span className="flex items-center gap-1 text-slate-400 font-semibold text-sm">
+            <span className="flex items-center gap-1 text-slate-400 font-normal text-sm">
               <Minus className="w-4 h-4" /> Static
             </span>
           </div>
@@ -203,13 +203,13 @@ export default function Leaderboard() {
               <img alt="Tom Wilson" className="rounded-full w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_OMfhKDeuYR6R-LgOHB17KGTjJRRTzkXI1GCsT7498-GX090wz1GOGciV8Fd-hkIqgW7g1XLYuxNTSb8pW8ycblPr2qaZu_9A2gqnBOcsQaSIEV_5NR4FLk9pzqmjR8iHlOu0gE0JNBVm6tdrDh3cOWlh7PPtfEpiY7T0cyT8mp9md_YqKdG92H5Dob-K1L3ZDQPpHoasKCve0iGJy6sYJLugK3QX7ChVvrWEl9vaLass65N1sdru6TN3ZmLN93kOynriGamLseU"/>
             </div>
             <div>
-              <h5 className="font-bold text-indigo-900">Tom Wilson</h5>
+              <h5 className="font-medium text-indigo-900">Tom Wilson</h5>
               <p className="text-xs text-slate-500">Operations</p>
             </div>
           </div>
-          <div className="col-span-2 text-right font-bold text-indigo-900">1,995</div>
+          <div className="col-span-2 text-right font-medium text-indigo-900">1,995</div>
           <div className="col-span-3 text-right flex justify-end">
-            <span className="flex items-center gap-1 text-red-500 font-semibold text-sm">
+            <span className="flex items-center gap-1 text-red-500 font-normal text-sm">
               <ChevronDown className="w-5 h-5" /> 2 spots
             </span>
           </div>
@@ -228,16 +228,16 @@ export default function Leaderboard() {
               <img alt="Alex Rodriguez" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHQvfAwZ09EU00_bjDkOqlL0rdovgERIgg_mslPMN7DRIg_TG_kCV0HZrYBaJHIS4MGkqczkpA0c-fbW7nkrHhFHT-VHaclIM5kGDVVVoaugYV4cAv4YZPZounlhsX7aCIb1eVRyIyAqM73j3HK9gVftJ8Z6-yqpoZ_6kg9BXFkHU3dOUCVBWBp7Jhox8vZ2HUgP9kDRsjAneeT06RaKjUz8YURphernaRsv9bEteF2yqmCGuMJ5afun9ocaqaqcTZpTh4JBrOVHg"/>
             </div>
             <div>
-              <h5 className="font-bold text-indigo-900 flex items-center gap-2">
+              <h5 className="font-medium text-indigo-900 flex items-center gap-2">
                 Alex Rodriguez 
                 <span className="text-[10px] bg-indigo-600 text-white px-1.5 py-0.5 rounded uppercase tracking-widest">You</span>
               </h5>
               <p className="text-xs text-slate-500">Marketing Strategy</p>
             </div>
           </div>
-          <div className="col-span-2 text-right font-bold text-indigo-900">1,480</div>
+          <div className="col-span-2 text-right font-medium text-indigo-900">1,480</div>
           <div className="col-span-3 text-right flex justify-end">
-            <span className="flex items-center gap-1 text-green-500 font-semibold text-sm">
+            <span className="flex items-center gap-1 text-green-500 font-normal text-sm">
               <ChevronUp className="w-5 h-5" /> 2 spots
             </span>
           </div>
@@ -245,7 +245,7 @@ export default function Leaderboard() {
 
         {/* Load more footer */}
         <div className="flex justify-center py-6 hover:bg-slate-50 transition-colors">
-          <button className="text-secondary font-bold text-sm flex items-center gap-2 hover:underline">
+          <button className="text-secondary font-medium text-sm flex items-center gap-2 hover:underline">
             View Full 100 Performers
             <ChevronDown className="w-4 h-4" />
           </button>
